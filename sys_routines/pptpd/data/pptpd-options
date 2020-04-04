@@ -1,0 +1,15 @@
+name pptpd
+refuse-pap
+refuse-chap
+refuse-mschap
+require-mschap-v2
+#require-mppe-128
+proxyarp
+nodefaultroute
+lock
+nobsdcomp
+novj
+novjccomp
+nologfd
+ms-dns 192.168.0.1
+ms-dns 8.8.8.8
