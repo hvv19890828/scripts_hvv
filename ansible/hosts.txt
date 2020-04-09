@@ -1,0 +1,23 @@
+[tvm]
+tvm1 ansible_host=192.168.0.211
+tvm2 ansible_host=192.168.0.212
+
+
+[tvmx]
+tvmx1 ansible_host=hvv19890828.ddns.net
+[tvmx:vars]
+ansible_user=root
+ansible_password=user1!
+ansible_port=56199
+
+[tvml]
+tvml1 ansible_host=127.0.0.1
+[tvml:vars]
+ansible_user=root
+ansible_password=user1!
+ansible_port=2222
+
+[tvms:children]
+tvm
+tvml
+tvmx
