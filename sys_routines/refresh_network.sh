@@ -63,7 +63,7 @@ do
 sleep 1
 if (( $i >= 180 ));
 then
-if (( $( curl --interface wlx00e0262e336b --connect-timeout 2 hvv19890828.ddns.net:55099 | grep -i archer | wc -l ) < 1 && $(curl --interface wlx502b73d80f39 --connect-timeout 2 hvv19890828.ddns.net:55099 | grep -i archer | wc -l) < 1 && $(curl --interface wlp2s0 --connect-timeout 2 hvv19890828.ddns.net:55099 | grep -i archer | wc -l) ));
+if (( $( curl --interface wlx00e0262e336b --connect-timeout 2 192.168.0.1:55099 | grep -i archer | wc -l ) < 1 && $(curl --interface wlx502b73d80f39 --connect-timeout 2 192.168.0.1:55099 | grep -i archer | wc -l) < 1 && $(curl --interface wlp2s0 --connect-timeout 2 192.168.0.1:55099 | grep -i archer | wc -l) ));
 then
 let "if_tries_counter=if_tries_counter+1"
 echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
