@@ -8,6 +8,6 @@ then
 mount /dev/sdb1 /bckp_hvv/
 chmod -R 777 /bckp_hvv
 else
-sleep 120
-reboot
+sleep 20
+/scripts_hvv/sys_routines/gracefull_system_restart.sh
 fi
