@@ -12,7 +12,7 @@ echo 0 > /scripts_hvv/sys_routines/if_tries_count
 fi
 if_tries_counter=$(cat /scripts_hvv/sys_routines/if_tries_count)
 
-#service connection
+#service connection refresh
 
 if [[ $stateof100 < 1 ]]
 then
@@ -27,7 +27,7 @@ sleep 2
 modprobe iwlwifi
 fi
 
-#data connection
+#data connection refresh
 
 if [[ $stateof101 < 1 ]]
 then
