@@ -7,4 +7,4 @@ if [[ $input == y ]]
 then
 sudo apt update -y && sudo apt upgrade -y
 fi
-echo "REMINDER: Use 'rbt' for graceful reboot, use 'vvmdell' for complete vagrant VMs removal, use 'l' for handy directory listing "
+echo "REMINDER: Use 'rbt' for graceful reboot, use 'vvmdel' for complete vagrant VMs removal, use 'l' for handy directory listing "
