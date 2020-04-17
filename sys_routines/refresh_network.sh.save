@@ -16,6 +16,7 @@ if (( $stateof101 > 0 ));
 then
 echo 0 > /scripts_hvv/sys_routines/if_tries_count101
 fi
+
 if_tries_counter=$(cat /scripts_hvv/sys_routines/if_tries_count)
 if_tries_counter100=$(cat /scripts_hvv/sys_routines/if_tries_count100)
 if_tries_counter101=$(cat /scripts_hvv/sys_routines/if_tries_count101)
@@ -60,10 +61,6 @@ if (( $if_tries_counter101 >= 1 ));
 then
 let "if_tries_counter=if_tries_counter+1"
 echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
-#reset of the indevidual network interfaces counters
-echo 0 > /scripts_hvv/sys_routines/if_tries_count100
-echo 0 > /scripts_hvv/sys_routines/if_tries_count101
-#reset of the individual network interfaces counters
 /scripts_hvv/sys_routines/gracefull_system_restart.sh
 else
 ip link set wlx502b73d80f39 down
