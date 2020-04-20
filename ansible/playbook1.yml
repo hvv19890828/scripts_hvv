@@ -10,14 +10,17 @@
   tasks:
   - name : ping
     ping :
-
   - block:
      - name : apache
        apt : name=apache2 state=latest
      - name: apache service
        service: name=apache2 state=started enabled=yes
     when : ansible_os_family == "Debian"
-  - name : tree
+  - block:
+     - name : tree
+       apt : name=tree state=latest
+    when : ansible_os_family == "Debian"
+  - name : tree_tree
     shell : "tree"
   - name : date
     shell : "date"

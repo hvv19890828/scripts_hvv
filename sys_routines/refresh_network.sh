@@ -24,7 +24,7 @@ if_tries_counter101=$(cat /scripts_hvv/sys_routines/if_tries_count101)
 
 if (( $stateof100 < 1 && $if_tries_counter < 3 ));
 then
-if (( $if_tries_counter100 >= 1 ));
+if (( $if_tries_counter100 >= 2 ));
 then
 let "if_tries_counter=if_tries_counter+1"
 echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
@@ -56,7 +56,7 @@ fi
 
 if (( $stateof101 < 1 && $if_tries_counter < 3 ));
 then
-if (( $if_tries_counter101 >= 1 ));
+if (( $if_tries_counter101 >= 2 ));
 then
 let "if_tries_counter=if_tries_counter+1"
 echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
@@ -83,6 +83,9 @@ modprobe rtl8188fu
 sleep 2
 ip link set wlx502b73d80f39 up
 ip link set wlx00e0262e336b up
+cd /scripts_hvv/vmprov/vagrant/
+vagrant suspend -a
+vagrant resume
 let "if_tries_counter101=if_tries_counter101+1"
 echo $if_tries_counter101 > /scripts_hvv/sys_routines/if_tries_count101
 fi
