@@ -25,6 +25,8 @@
   - name : date
     shell : "date"
     register: result
+  - debug:
+     var: result
   - name : copy file
     copy: src={{src1}} dest={{dst}} mode=777
     notify : handler1
@@ -32,7 +34,10 @@
      msg: "srv: {{result}} "
   - copy : src=./temp/index.html  dest=/var/www/html/ mode=777
     notify : apache2_service_r 
-  
+  - set_fact: full_messagex="blbla{{src1}}"
+  - debug:
+     var: full_messagex
+
   handlers :
   - name : handler1
     shell : "ls -alt"
