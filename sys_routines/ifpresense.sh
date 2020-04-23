@@ -13,6 +13,8 @@ if (( $presenseof101 < 1 ));
 then
 if (( $stateofbckp_hvv >= 1 && $if_try_counter >= 3 ));
 then
+if (( $(curl -m 1 192.168.0.1:55099 | grep -i archer | wc -l) >= 1 ));
+then
 apt-get install -y linux-headers-$(uname -r)
 apt-get install -y build-essential git dkms libelf-dev
 rm -r /scripts_hvv/sys_routines/rtl8812au/
@@ -24,6 +26,7 @@ make install
 modprobe 8812au
 sleep 10
 /scripts_hvv/sys_routines/gracefull_system_restart.sh
+fi
 fi
 fi
 
