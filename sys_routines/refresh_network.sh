@@ -86,6 +86,7 @@ ip link set wlx00e0262e336b up
 sleep 5
 cd /scripts_hvv/vmprov/vagrant/
 vagrant suspend
+sleep 2
 vagrant resume
 let "if_tries_counter101=if_tries_counter101+1"
 echo $if_tries_counter101 > /scripts_hvv/sys_routines/if_tries_count101
