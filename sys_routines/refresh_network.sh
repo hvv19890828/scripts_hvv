@@ -83,8 +83,9 @@ modprobe rtl8188fu
 sleep 2
 ip link set wlx502b73d80f39 up
 ip link set wlx00e0262e336b up
+sleep 5
 cd /scripts_hvv/vmprov/vagrant/
-vagrant suspend -a
+vagrant suspend
 vagrant resume
 let "if_tries_counter101=if_tries_counter101+1"
 echo $if_tries_counter101 > /scripts_hvv/sys_routines/if_tries_count101
