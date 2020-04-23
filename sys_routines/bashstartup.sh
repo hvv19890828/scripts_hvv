@@ -5,6 +5,6 @@ echo " ... would you like to check for updates(y / any input)? ... "
 read input
 if [[ $input == y ]]
 then
-sudo apt update -y && sudo apt upgrade -y
+sudo apt-get update -y && sudo apt-get upgrade -y
 fi
 echo "REMINDER: Use 'rbt' for graceful reboot, use 'vvmdel' for complete vagrant VMs removal and 'vvmup' as an equivalent of 'vagrant up', use 'l' for handy directory listing "
