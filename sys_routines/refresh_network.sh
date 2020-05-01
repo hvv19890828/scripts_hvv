@@ -47,11 +47,29 @@ sleep 2
 modprobe iwlwifi
 sleep 2
 ip link set wlp2s0 up
-sleep 5
-cd /scripts_hvv/vmprov/vagrant/
-vagrant suspend
-sleep 2
-vagrant resume
+sleep 4
+#
+vvmstat=$(vagrant global-status | grep node | wc -l)
+let "vvmstat=vvmstat+1"
+is=1
+nodex=node
+while [[ $is < $vvmstat ]]
+do
+tmps=$nodex$is
+cd /scripts_hvv/vmprov/vagrant/ && vagrant suspend $tmps
+sleep 1
+let "is=is+1"
+done
+#
+ir=1
+while [[ $ir < $vvmstat ]]
+do
+tmpr=$nodex$ir
+cd /scripts_hvv/vmprov/vagrant/ && vagrant resume $tmpr
+sleep 1
+let "ir=ir+1"
+done
+#
 let "if_tries_counter100=if_tries_counter100+1"
 echo $if_tries_counter100 > /scripts_hvv/sys_routines/if_tries_count100
 fi

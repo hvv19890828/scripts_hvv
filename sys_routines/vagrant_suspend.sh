@@ -1,4 +1,5 @@
 #!/bin/bash
+#vars initialization
 vvmstats=$(vagrant global-status | grep node | wc -l)
 let "vvmstats=vvmstats+1"
 is=1
@@ -10,4 +11,3 @@ cd /scripts_hvv/vmprov/vagrant/ && vagrant suspend $tmps
 sleep 1
 let "is=is+1"
 done
-reboot
