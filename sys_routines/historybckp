@@ -296,3 +296,261 @@
   296  cd ..
   297  l
   298  history > /scripts_hvv/sys_routines/historybckp
+  299  l
+  300  chmod 777 historybckp 
+  301  cd ..
+  302  cd vmprov/vagrant/
+  303  cd  ubuntu
+  304  nano ssh-setup.sh 
+  305  cd ..
+  306  vvmup
+  307  vvmdel
+  308  nano ubuntu/ssh-setup.sh 
+  309  l
+  310  rm -r .vagrant/
+  311  rm ubuntu-bionic-18.04-cloudimg-console.log 
+  312  history | grep vagrant
+  313  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  314  vagrant box list 
+  315  vvmdel
+  316  cd ..
+  317  l
+  318  nano .gitignore 
+  319  cp -r /home/hvv/Downloads/tmp/scripts_hvv/ansible/temp/ /scripts_hvv/ansible/
+  320  ll /scripts_hvv/ansible/
+  321  ll /scripts_hvv/ansible/temp/
+  322  chmod -R 777 /scripts_hvv/ansible/temp/
+  323  cd sys_routines/
+  324  l
+  325  vvmdel
+  326  apt update
+  327  sudo apt-add-repository ppa:ansible/ansible
+  328  sudo apt-get update
+  329  sudo apt-get install ansible
+  330  ansible --version
+  331  sudo apt-get update
+  332  sudo apt-get upgrade
+  333  reboot
+  334  rm -r /home/hvv/Downloads/tmp/scripts_hvv/
+  335  iptables -S
+  336  vvmdel
+  337  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  338  reboot
+  339  vvmup
+  340  curl http://archive.ubuntu.com/ubuntu
+  341  vvmdel
+  342  cd /scripts_hvv/vmprov/vagrant/
+  343  vvmdel
+  344  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  345  nano Vagrantfile 
+  346  l
+  347  ll .vagrant/
+  348  ll .vagrant/machines/
+  349  ll .vagrant/machines/node1
+  350  ll .vagrant/machines/node1/virtualbox/
+  351  cat .vagrant/machines/node1/virtualbox/vagrant_cwd 
+  352  l
+  353  vvmdel
+  354  vvmup
+  355  vvmdel
+  356  nano ubuntu/ssh-setup.sh 
+  357  nano Vagrantfile 
+  358  vvmup
+  359  nano /scripts_hvv/vmprov/vagrant/Vagrantfile 
+  360  /scripts_hvv/sys_routines/refresh_network.sh 
+  361  rbt
+  362  /scripts_hvv/sys_routines/refresh_network.sh 
+  363  date
+  364  reboot
+  365  timedatectl
+  366  timedatectl list-timezones
+  367  sudo timedatectl set-timezone Europe/Kiev
+  368  timedatectl
+  369  apt update
+  370  apt-get update -y
+  371  apt-get upgrade -y
+  372  timedatectl
+  373  sudo timedatectl set-ntp off
+  374  timedatectl
+  375  sudo timedatectl set-ntp on
+  376  timedatectl
+  377  date
+  378  sudo reboot
+  379  reboot
+  380  vvmup
+  381  vvmdel
+  382  iptables -S
+  383  nano /scripts_hvv/vmprov/vagrant/ubuntu/ssh-setup.sh 
+  384  vvmup
+  385  sudo apt-get update && sudo-apt-get dist-upgrade
+  386  sudo apt-get update && sudo apt-get dist-upgrade
+  387  sudo apt-get update && sudo apt full-upgrade
+  388  iptables -S
+  389  vvmdel
+  390  ifconfig
+  391  source ~/.bashrc 
+  392  reboot
+  393  nano /scripts_hvv/vmprov/vagrant/Vagrantfile 
+  394  vvmup
+  395  nano /scripts_hvv/vmprov/vagrant/ubuntu/ssh-setup.sh 
+  396  history
+  397  cd /scripts_hvv/vmprov/vagrant/
+  398  vagrant suspend
+  399  vagrant resume
+  400  rbt
+  401  vagrant status
+  402  cd /scripts_hvv/vmprov/vagrant/
+  403  vagrant status
+  404  ifconfig
+  405  vagrant status
+  406  l
+  407  git status
+  408  git add .
+  409  git commit -m "aftermoved to ubuntu-lite-server"
+  410  git config -l
+  411  git config --global user.name "Viacheslav Hudzovskyi"
+  412  git config --global user.email "hvv19890828@gmail.com"
+  413  git status
+  414  git add .
+  415  git commit -m "aftermoved to ubuntu-lite-server"
+  416  git status
+  417  git push origin
+  418  git status
+  419  rbt
+  420  ssh hvv@192.168.0.100
+  421  sudo cat /root/.ssh/known_hosts
+  422  cd /scripts_hvv/sys_routines/
+  423  cat vagrant_suspend.sh > vagrant_resume.sh 
+  424  chmod 777 vagrant_resume.sh 
+  425  nano vagrant_resume.sh 
+  426  nano vagrant_suspend.sh 
+  427  nano vagrant_resume.sh 
+  428  vagrant status | grep node | wc -l
+  429  l
+  430  cat bckp_state_check.sh 
+  431  nano bckp_state_check.sh 
+  432  /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  433  nano /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  434  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  435  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  436  vvmdel
+  437  ll
+  438  nano gracefull_system_restart.sh 
+  439  nano refresh_network.sh 
+  440  cat /scripts_hvv/sys_routines/vagrant_suspend.sh
+  441  vvmdel
+  442  cd ..
+  443  cd ansible/
+  444  nano hosts.txt 
+  445  vvmdel
+  446  cat /scripts_hvv/vmprov/v
+  447  nano /etc/ssh/sshd_config
+  448  sudo service ssh restart
+  449  ifconfig
+  450  cd /scripts_hvv/vmprov/vagrant
+  451  vagrant resume
+  452  vagrant resume node1
+  453  vagrant suspend node1
+  454  vagrant list
+  455  vagrant global-status
+  456  vagrant status
+  457  vagrant up
+  458  vagrant global-status
+  459  vagrant global-status | grep node
+  460  vagrant global-status | grep node | wc -l
+  461  vagrant up
+  462  vagrant global-status | grep node | wc -l
+  463  nano Vagrantfile 
+  464  vagrant up
+  465  nano Vagrantfile 
+  466  vvmdel
+  467  nano Vagrantfile 
+  468  vagrant up
+  469  vagrant global-status | grep node | wc -l
+  470  nano Vagrantfile 
+  471  vagrant up
+  472  vagrant global-status | grep node | wc -l
+  473  top
+  474  vvmdel
+  475  nano Vagrantfile 
+  476  vvmdel
+  477  vagrant global-status | grep node | wc -l
+  478  cd ..
+  479  cd sys_routines/
+  480  nano vvmdel.sh 
+  481  vvmdel
+  482  cat bckp.sh > vagrant_suspend.sh
+  483  nano vagrant_suspend.sh
+  484  chmod 777  vagrant_suspend.sh
+  485  cd ..
+  486  cd vmprov/vagrant/
+  487  nano Vagrantfile 
+  488  vagrant up
+  489  nano Vagrantfile 
+  490  vagrant up
+  491  vagrant status | grep node | wc -l
+  492  vagrant status
+  493  nano Vagrantfile 
+  494  vagrant status
+  495  vagrant status | grep node | wc -l
+  496  nano Vagrantfile 
+  497  vvmdel
+  498  nano Vagrantfile 
+  499  vvmdel
+  500  nano Vagrantfile 
+  501  vvmup
+  502  vagrant status
+  503  nano Vagrantfile 
+  504  rbt
+  505  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  506  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  507  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  508  cd /scripts_hvv/vmprov/vagrant/
+  509  nano Vagrantfile 
+  510  vvmup
+  511  vagrant global-status
+  512  cd ..
+  513  vagrant global-status
+  514  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  515  /scripts_hvv/sys_routines/vagrant_suspend.sh
+  516  vagrant global-status
+  517  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  518  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  519  vagrant global-statu
+  520  vagrant global-status
+  521  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  522  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  523  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  524  nano /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  525  /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  526  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  527  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  528  /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  529  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  530  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  531  cd ..
+  532  nano /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  533  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  534  cd /scripts_hvv/sys_routines/
+  535  l
+  536  nano gracefull_system_restart.sh 
+  537  nano bckp_state_check.sh 
+  538  nano gracefull_system_restart.sh 
+  539  nano bckp_state_check.sh 
+  540  l
+  541  nano refresh_network.sh 
+  542  vvmdel
+  543  vagrant global-status
+  544  vvmup
+  545  rbt
+  546  cd .
+  547  cd ..
+  548  cd ansible/
+  549  cd temp/
+  550  cd ...
+  551  cd ..
+  552  git status
+  553  git add .
+  554  git commit -m "vagrant related"
+  555  git status
+  556  history > /scripts_hvv/sys_routines/historybckp 
