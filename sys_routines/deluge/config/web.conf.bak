@@ -17,7 +17,12 @@
     "session_timeout": 3600,
     "sessions": {
         "a5b43972ab95897d646f201c61451e03cac96c5b66be45a8980aa7e034f2ae2f": {
-            "expires": 1588362030.0,
+            "expires": 1588362259.0,
+            "level": 10,
+            "login": "admin"
+        },
+        "ea66c870c340792cecee31b1d05b18ee532a5574961bb2a9393e69a2fd4b9297": {
+            "expires": 1588371731.0,
             "level": 10,
             "login": "admin"
         }
