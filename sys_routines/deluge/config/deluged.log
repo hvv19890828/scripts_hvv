@@ -1,18 +1,18 @@
-06:55:06 [INFO    ][deluge.configmanager:52  ] Setting config directory to: /config
-06:55:06 [INFO    ][deluge.core.daemon            :94  ] Deluge daemon 2.0.3-2-201906121747-ubuntu18.04.1
-06:55:06 [INFO    ][deluge.core.core              :339 ] Successfully loaded session.state: /config/session.state
-06:55:06 [INFO    ][deluge.core.core              :339 ] Successfully loaded session.state: /config/session.state.bak
-06:55:06 [INFO    ][deluge.core.alertmanager      :148 ] Alert Queue Size set to 10000
-06:55:06 [INFO    ][deluge.core.rpcserver         :402 ] Starting DelugeRPC server localhost:58846
-06:55:06 [INFO    ][twisted                       :154 ] Factory (TLS) starting on 58846
-06:55:06 [INFO    ][twisted                       :154 ] Starting factory <twisted.internet.protocol.Factory object at 0x7fde2ff929e8>
-06:55:06 [INFO    ][deluge.core.daemon            :154 ] Deluge daemon starting...
-06:55:06 [INFO    ][deluge.pluginmanagerbase      :189 ] Plugin AutoAdd enabled...
-06:55:06 [INFO    ][deluge.core.authmanager       :228 ] Opening auth for load: /config/auth
-06:55:06 [INFO    ][deluge.core.authmanager       :236 ] Successfully loaded auth: /config/auth
-06:55:06 [INFO    ][deluge.core.torrentmanager    :806 ] Loading torrent state: /config/state/torrents.state
-06:55:06 [INFO    ][deluge.core.torrentmanager    :819 ] Successfully loaded /config/state/torrents.state
-06:55:06 [INFO    ][deluge.core.torrentmanager    :1066] Opening torrents.fastresume for load: /config/state/torrents.fastresume
-06:55:06 [INFO    ][deluge.core.torrentmanager    :1077] Successfully loaded torrents.fastresume: /config/state/torrents.fastresume
-06:55:06 [INFO    ][deluge.core.torrentmanager    :885 ] Finished loading 0 torrents in 0:00:00.001205
-06:55:07 [INFO    ][deluge.core.torrentmanager    :1609] on_alert_external_ip: 176.36.87.75
+07:45:47 [INFO    ][deluge.configmanager:52  ] Setting config directory to: /config
+07:45:47 [INFO    ][deluge.core.daemon            :94  ] Deluge daemon 2.0.3-2-201906121747-ubuntu18.04.1
+07:45:47 [INFO    ][deluge.core.core              :339 ] Successfully loaded session.state: /config/session.state
+07:45:47 [INFO    ][deluge.core.core              :339 ] Successfully loaded session.state: /config/session.state.bak
+07:45:47 [INFO    ][deluge.core.alertmanager      :148 ] Alert Queue Size set to 10000
+07:45:47 [INFO    ][deluge.core.rpcserver         :402 ] Starting DelugeRPC server localhost:58846
+07:45:47 [INFO    ][twisted                       :154 ] Factory (TLS) starting on 58846
+07:45:47 [INFO    ][twisted                       :154 ] Starting factory <twisted.internet.protocol.Factory object at 0x7ff171d15940>
+07:45:47 [INFO    ][deluge.core.daemon            :154 ] Deluge daemon starting...
+07:45:47 [INFO    ][deluge.pluginmanagerbase      :189 ] Plugin AutoAdd enabled...
+07:45:47 [INFO    ][deluge.core.authmanager       :228 ] Opening auth for load: /config/auth
+07:45:47 [INFO    ][deluge.core.authmanager       :236 ] Successfully loaded auth: /config/auth
+07:45:47 [INFO    ][deluge.core.torrentmanager    :806 ] Loading torrent state: /config/state/torrents.state
+07:45:47 [INFO    ][deluge.core.torrentmanager    :819 ] Successfully loaded /config/state/torrents.state
+07:45:47 [INFO    ][deluge.core.torrentmanager    :1066] Opening torrents.fastresume for load: /config/state/torrents.fastresume
+07:45:47 [INFO    ][deluge.core.torrentmanager    :1077] Successfully loaded torrents.fastresume: /config/state/torrents.fastresume
+07:45:47 [INFO    ][deluge.core.torrentmanager    :885 ] Finished loading 0 torrents in 0:00:00.001228
+07:45:48 [INFO    ][deluge.core.torrentmanager    :1609] on_alert_external_ip: 176.36.87.75
