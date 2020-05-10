@@ -8,15 +8,14 @@ then
 mount /dev/sdb1 /bckp_hvv/
 chmod -R 777 /bckp_hvv
 #
-vvmstatr=$(vagrant global-status | grep node | wc -l)
+vvmstatr=$(vagrant global-status | grep host | wc -l)
 let "vvmstatr=vvmstatr+1"
 ir=1
-noder=node
+noder=host
 while [[ $ir < $vvmstatr ]]
 do
 tmpr=$noder$ir
-cd /scripts_hvv/vmprov/vagrant/ && vagrant resume $tmpr
-sleep 1
+cd /scripts_hvv/vmprov/vagrant/ && vagrant resume $tmpr && sleep 1
 let "ir=ir+1"
 done
 #

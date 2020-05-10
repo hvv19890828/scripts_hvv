@@ -34,41 +34,33 @@ echo 0 > /scripts_hvv/sys_routines/if_tries_count101
 #reset of the individual network interfaces counters
 /scripts_hvv/sys_routines/gracefull_system_restart.sh
 else
-ip link set wlp2s0 down
-sleep 2
+ip link set wlp2s0 down && sleep 2
 modprobe -r iwlwifi
 chmod -R 777 /sys/bus/pci
-chmod -R 777 /sys/bus/pci/devices/0000:02:00.0
-sleep 2
-echo 1 > /sys/bus/pci/devices/0000:02:00.0/remove
-sleep 2
-echo 1 > /sys/bus/pci/rescan
-sleep 2
-modprobe iwlwifi
-sleep 2
-ip link set wlp2s0 up
-sleep 5
+chmod -R 777 /sys/bus/pci/devices/0000:02:00.0 && sleep 2
+echo 1 > /sys/bus/pci/devices/0000:02:00.0/remove && sleep 2
+echo 1 > /sys/bus/pci/rescan && sleep 2
+modprobe iwlwifi && sleep 2
+ip link set wlp2s0 up && sleep 5
 #
-vvmstat=$(vagrant global-status | grep node | wc -l)
-let "vvmstat=vvmstat+1"
-is=1
-nodex=node
-while [[ $is < $vvmstat ]]
-do
-tmps=$nodex$is
-cd /scripts_hvv/vmprov/vagrant/ && vagrant suspend $tmps
-sleep 1
-let "is=is+1"
-done
+#vvmstat=$(vagrant global-status | grep host | wc -l)
+#let "vvmstat=vvmstat+1"
+#is=1
+#nodex=host
+#while [[ $is < $vvmstat ]]
+#do
+#tmps=$nodex$is
+#cd /scripts_hvv/vmprov/vagrant/ && vagrant suspend $tmps && sleep 5
+#let "is=is+1"
+#done
 #
-ir=1
-while [[ $ir < $vvmstat ]]
-do
-tmpr=$nodex$ir
-cd /scripts_hvv/vmprov/vagrant/ && vagrant resume $tmpr
-sleep 1
-let "ir=ir+1"
-done
+#ir=1
+#while [[ $ir < $vvmstat ]]
+#do
+#tmpr=$nodex$ir
+#cd /scripts_hvv/vmprov/vagrant/ && vagrant resume $tmpr && sleep 1
+#let "ir=ir+1"
+#done
 #
 let "if_tries_counter100=if_tries_counter100+1"
 echo $if_tries_counter100 > /scripts_hvv/sys_routines/if_tries_count100
@@ -89,24 +81,19 @@ echo 0 > /scripts_hvv/sys_routines/if_tries_count101
 #reset of the individual network interfaces counters
 /scripts_hvv/sys_routines/gracefull_system_restart.sh
 else
-ip link set enx000ec79ecb52 down
+ip link set enx000ec79ecb52 down && sleep 2
 #ip link set wlx502b73d80f39 down
 #ip link set wlx00e0262e336b down
-sleep 2
 modprobe -r ax88179_178a
 #modprobe -r 8812au
 #modprobe -r rtl8188fu
 chmod -R 777 /sys/bus/pci
-chmod -R 777 /sys/bus/pci/devices/0000:00:14.0
-sleep 2
-echo 1 > /sys/bus/pci/devices/0000:00:14.0/remove
-sleep 2
-echo 1 > /sys/bus/pci/rescan
-sleep 2
-modprobe ax88179_178a
+chmod -R 777 /sys/bus/pci/devices/0000:00:14.0 && sleep 2
+echo 1 > /sys/bus/pci/devices/0000:00:14.0/remove && sleep 2
+echo 1 > /sys/bus/pci/rescan && sleep 2
+modprobe ax88179_178a && sleep 2
 #modprobe 8812au
 #modprobe rtl8188fu
-sleep 2
 ip link set enx000ec79ecb52 up
 #ip link set wlx502b73d80f39 up
 #ip link set wlx00e0262e336b up

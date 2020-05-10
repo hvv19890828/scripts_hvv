@@ -1,16 +1,18 @@
 [tvm]
 tvm1 ansible_host=192.168.0.201
 tvm2 ansible_host=192.168.0.202
+tvm3 ansible_host=192.168.0.203
 
+[ddns_tvm]
+ddns_tvm1 ansible_host=hvv19890828.ddns.net ansible_port=56199
+ddns_tvm2 ansible_host=hvv19890828.ddns.net ansible_port=56299
+ddns_tvm3 ansible_host=hvv19890828.ddns.net ansible_port=56399
 
-[tvmx]
-tvmx1 ansible_host=hvv19890828.ddns.net
-[tvmx:vars]
-ansible_user=root
-ansible_password=user1!
-ansible_port=56199
+[k8s]
+k8s1 ansible_host=192.168.0.202
+k8s2 ansible_host=192.168.0.203
 
-
-[tvms:children]
+[all:children]
 tvm
-tvmx
+ddns_tvm
+k8s

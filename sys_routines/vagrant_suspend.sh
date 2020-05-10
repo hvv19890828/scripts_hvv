@@ -1,9 +1,9 @@
 #!/bin/bash
 #vars initialization
-vvmstats=$(vagrant global-status | grep node | wc -l)
+vvmstats=$(vagrant global-status | grep host | wc -l)
 let "vvmstats=vvmstats+1"
 is=1
-nodes=node
+nodes=host
 while [[ $is < $vvmstats ]]
 do
 tmps=$nodes$is

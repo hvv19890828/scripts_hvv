@@ -8,3 +8,4 @@ sudo service ssh restart
 echo -e "user1!\nuser1!" | sudo passwd root
 sudo apt-get update -y
 sudo apt-get upgrade -y
+sudo echo "@reboot         root    ip link set enp0s3 down" >> /etc/crontab

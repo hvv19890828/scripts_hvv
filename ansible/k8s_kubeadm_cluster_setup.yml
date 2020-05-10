@@ -1,0 +1,7 @@
+---
+- name : k8s kubeadm cluster setup
+  hosts : "{nodes}"
+  become: yes
+  
+  roles:
+   - {role: }

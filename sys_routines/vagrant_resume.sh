@@ -1,9 +1,9 @@
 #!/bin/bash
 #vars initialization
-vvmstatr=$(vagrant global-status | grep node | wc -l)
+vvmstatr=$(vagrant global-status | grep host | wc -l)
 let "vvmstatr=vvmstatr+1"
 ir=1
-noder=node
+noder=host
 while [[ $ir < $vvmstatr ]]
 do
 tmpr=$noder$ir
