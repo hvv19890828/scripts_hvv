@@ -24,7 +24,7 @@ if_tries_counter101=$(cat /scripts_hvv/sys_routines/if_tries_count101)
 
 if (( $stateof100 < 1 && $if_tries_counter < 3 )); #&& $if_tries_counter < 3
 then
-if (( $if_tries_counter100 >= 4 ));
+if (( $if_tries_counter100 >= 2 ));
 then
 let "if_tries_counter=if_tries_counter+1"
 echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
@@ -71,7 +71,7 @@ fi
 
 if (( $stateof101 < 1 && $if_tries_counter < 3 ));
 then
-if (( $if_tries_counter101 >= 4 ));
+if (( $if_tries_counter101 >= 2 ));
 then
 let "if_tries_counter=if_tries_counter+1"
 echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count

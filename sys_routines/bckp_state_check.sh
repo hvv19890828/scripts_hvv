@@ -1,11 +1,11 @@
 #!/bin/bash
 #vars initialization
-stateofsdb1=$(blkid | grep 18a7afb1-7a0f-4904-8c97-95120cb32823 | wc -l)
+stateofsdb1=$(blkid | grep bf1c6e60-fd77-4877-bf6e-d0db3dc1fe99 | wc -l)
 #verification
 sleep 30
 if (( $stateofsdb1 == 1 ));
 then
-mount /dev/sdb1 /bckp_hvv/
+mount /dev/sdb /bckp_hvv
 chmod -R 777 /bckp_hvv
 #
 vvmstatr=$(vagrant global-status | grep host | wc -l)
