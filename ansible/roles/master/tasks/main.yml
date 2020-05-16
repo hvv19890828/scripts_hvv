@@ -1,2 +1,19 @@
 ---
 # tasks file for master
+
+- set_fact: kubeadmInit="kubeadm init --apiserver-advertise-address=192.168.6.32"
+
+- name: kubeadm init 
+  shell: "{{kubeadmInit}}"
+
+- name: create .kube
+  shell: "mkdir -p $HOME/.kube"
+
+- name: copy config file
+  shell: "cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
+
+- name: config chown
+  shell: "chown $(id -u):$(id -g) $HOME/.kube/config"
+
+- name : Apply CNI
+  shell : "kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml"

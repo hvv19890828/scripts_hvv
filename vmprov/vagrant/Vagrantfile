@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
         host.vm.network "forwarded_port", guest: 22, host: "#{54320 + i}",
 #        host.vm.network "public_network", :ip => IP_NW + "#{210 + i}", :netmask => '255.255.255.0', :bridge => BRIF,
           auto_correct: true
-        host.vm.network "forwarded_port", guest: 22, host: "#{54320 + NODES  + i}",
+        host.vm.network "forwarded_port", guest: "#{54320 + NODES  + i}", host: "#{54320 + NODES  + i}",
           auto_correct: true
 #        host.vm.provision "shell",
 #                run: "always",
