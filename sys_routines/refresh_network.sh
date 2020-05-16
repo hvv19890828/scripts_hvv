@@ -2,8 +2,8 @@
 
 #vars initialization
 
-stateof101=$(curl --interface enx000ec79ecb52 -m 1 192.168.0.1:55099 | grep -i archer | wc -l)
-stateof100=$(curl --interface wlp2s0 -m 1 192.168.0.1:55099 | grep -i archer | wc -l)
+stateof101=$(curl --interface enx000ec79ecb52 -m 5 192.168.0.1:55099 | grep -i archer | wc -l)
+stateof100=$(curl --interface wlp2s0 -m 5 192.168.0.1:55099 | grep -i archer | wc -l)
 if (( $stateof100 > 0 && $stateof101 > 0 )); #&& $stateof101 > 0
 then
 echo 0 > /scripts_hvv/sys_routines/if_tries_count
@@ -26,13 +26,15 @@ if (( $stateof100 < 1 && $if_tries_counter < 3 )); #&& $if_tries_counter < 3
 then
 if (( $if_tries_counter100 >= 3 ));
 then
-let "if_tries_counter=if_tries_counter+1"
-echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
+#let "if_tries_counter=if_tries_counter+1"
+#echo $if_tries_counter > /scripts_hvv/sys_routines/if_tries_count
 #reset of the indevidual network interfaces counters
-echo 0 > /scripts_hvv/sys_routines/if_tries_count100
-echo 0 > /scripts_hvv/sys_routines/if_tries_count101
+let "if_tries_counter100=if_tries_counter100+1"
+echo $if_tries_counter100 > /scripts_hvv/sys_routines/if_tries_count100
+#echo 0 > /scripts_hvv/sys_routines/if_tries_count100
+#echo 0 > /scripts_hvv/sys_routines/if_tries_count101
 #reset of the individual network interfaces counters
-/scripts_hvv/sys_routines/gracefull_system_restart.sh
+#/scripts_hvv/sys_routines/gracefull_system_restart.sh
 else
 ip link set wlp2s0 down && sleep 2
 modprobe -r iwlwifi
