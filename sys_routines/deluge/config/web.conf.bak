@@ -55,6 +55,11 @@
             "expires": 1588371731.0,
             "level": 10,
             "login": "admin"
+        },
+        "f6d841dddaae93868b5ea058d5d1383278bbbe554056b84f8ae10039e32f54d0": {
+            "expires": 1589600860.0,
+            "level": 10,
+            "login": "admin"
         }
     },
     "show_session_speed": false,

@@ -4,8 +4,7 @@
   become: yes
   
   roles:
-#    - common
+    - common
     - role: master
       when: inventory_hostname == "{{masterHost}}"
-    - role: worker
-      when: inventory_hostname != "{{masterHost}}"
+    - worker

@@ -1,2 +1,13 @@
 ---
 # tasks file for worker
+
+- name: kubeadm token create
+  shell: "kubeadm token create --print-join-command"
+  register: joinCommand
+  when: inventory_hostname == "{{masterHost}}"
+
+- set_fact: kubeadmJoin="date"
+
+- name: kubeadm join
+  shell: "{{kubeadmJoin}}"
+  when: inventory_hostname != "{{masterHost}}"
