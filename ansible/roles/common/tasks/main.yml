@@ -49,6 +49,7 @@
     - curl
     - gnupg-agent
     - software-properties-common
+    - net-tools
    state: latest  
 
 - name : apt-key add
@@ -82,8 +83,9 @@
   blockinfile:
    path: /etc/hosts
    block: |
-    192.168.5.12  host2
-    192.168.5.13  host3
+    192.168.6.32  host2
+    192.168.6.33  host3
+    192.168.6.34  host4
 
 - name: apt update 3
   apt:

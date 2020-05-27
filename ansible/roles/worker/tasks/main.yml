@@ -2,12 +2,22 @@
 # tasks file for worker
 
 - name: kubeadm token create
-  shell: "kubeadm token create --print-join-command"
-  register: joinCommand
+  shell: kubeadm token create --print-join-command
+  register: tokenCreate
+  delegate_to: "{{masterHost}}"
   when: inventory_hostname == "{{masterHost}}"
 
-- set_fact: kubeadmJoin="date"
+- name: Set JCRGXP
+  set_fact: 'join.*'
+
+- name: Get 1st part of join command
+  set_fact:
+    joinCommandBuff: "{{ tokenCreate.stdout | regex_search('JCRGXP') }}"
+
+- name: Set join command
+  set_fact:
+    joinCommand: "kubeadm {{joinCommandBuff}}"
 
 - name: kubeadm join
-  shell: "{{kubeadmJoin}}"
+  shell: "{{joinCommand}}"
   when: inventory_hostname != "{{masterHost}}"

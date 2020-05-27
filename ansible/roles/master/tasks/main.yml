@@ -1,7 +1,16 @@
 ---
 # tasks file for master
 
-- set_fact: kubeadmInit="kubeadm init --apiserver-advertise-address=192.168.6.32"
+- name: Get ifconfig on master
+  shell: ifconfig | grep -A1 enp0s8 | grep inet
+  register: MIFReg
+- name: Get IP on master
+  set_fact:
+    MIFRes: "{{ MIFReg.stdout | regex_search(MIFRGXP) }}"
+  vars:
+    MIFRGXP: '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
+
+- set_fact: kubeadmInit="kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{MIFRes}}"
 
 - name: kubeadm init 
   shell: "{{kubeadmInit}}"
@@ -16,4 +25,4 @@
   shell: "chown $(id -u):$(id -g) $HOME/.kube/config"
 
 - name : Apply CNI
-  shell : "kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml"
+  shell : "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
