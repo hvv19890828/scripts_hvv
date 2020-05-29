@@ -4,20 +4,35 @@
 - name: kubeadm token create
   shell: kubeadm token create --print-join-command
   register: tokenCreate
+  run_once: True
   delegate_to: "{{masterHost}}"
-  when: inventory_hostname == "{{masterHost}}"
-
-- name: Set JCRGXP
-  set_fact: 'join.*'
-
-- name: Get 1st part of join command
-  set_fact:
-    joinCommandBuff: "{{ tokenCreate.stdout | regex_search('JCRGXP') }}"
-
-- name: Set join command
-  set_fact:
-    joinCommand: "kubeadm {{joinCommandBuff}}"
 
 - name: kubeadm join
-  shell: "{{joinCommand}}"
+  shell: "{{tokenCreate.stdout}}"
   when: inventory_hostname != "{{masterHost}}"
+
+- name: Pause
+  shell: sleep 30
+   
+- block: #set node IP in config kubelet service config file
+
+   - name: Remove 10-kubeadm.conf
+     file:
+      path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+      state: absent
+
+   - name: Get ifconfig
+     shell: ifconfig | grep -A1 enp0s8 | grep inet
+     register: IFReg
+
+   - name: Get IP
+     set_fact:
+      hostIntrnIP: "{{ IFReg.stdout | regex_search(IFRGXP) }}"
+     vars:
+      IFRGXP: '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
+
+   - name: Copy new config file
+     template: src=10-kubeadm.j2 dest=/etc/systemd/system/kubelet.service.d/10-kubeadm.conf mode=0640
+     notify:
+      - kubelet-service-reconfig-handle1
+      - kubelet-service-reconfig-handle2

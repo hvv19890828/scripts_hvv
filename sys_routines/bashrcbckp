@@ -84,6 +84,7 @@ alias l='echo "**************************************************" && ls -alF &&
 alias vvmdel='/scripts_hvv/sys_routines/vvmdel.sh'
 alias vvmup='/scripts_hvv/sys_routines/vvmup.sh'
 alias rbt='/scripts_hvv/sys_routines/gracefull_system_restart.sh'
+alias k8s='cd /scripts_hvv/ansible/ && ansible-playbook k8s_kubeadm_cluster_setup.yml --extra-var "masterHost=k8s1" -vv'
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -100,5 +101,4 @@ fi
 #    . /etc/bash_completion
 #fi
 
-# HVV's personal section
 /scripts_hvv/sys_routines/bashstartup.sh
