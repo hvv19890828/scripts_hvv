@@ -3,3 +3,4 @@ tmp
 sys_routines/rtl8812au/
 vmprov/vagrant/.vagrant/
 vmprov/vagrant/*.log
+jenkins/
