@@ -1,3 +1,7 @@
+[ddns_hvvsrv]
+ddns_hvvsrv100 ansible_host=hvv19890828.ddns.net ansible_port=55299
+ddns_hvvsrv101 ansible_host=hvv19890828.ddns.net ansible_port=55399
+
 [tvm]
 tvm1 ansible_host=127.0.0.1 ansible_port=54321
 tvm2 ansible_host=127.0.0.1 ansible_port=54322

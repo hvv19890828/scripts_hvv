@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #vars initialization
-
-stateof101=$(curl --interface enx000ec79ecb52 -m 5 http://www.google.com/ | grep -i google | wc -l)
-stateof100=$(curl --interface wlp2s0 -m 5 http://www.google.com/ | grep -i google | wc -l)
+cd /scripts_hvv/ansible
+stateof101=$(ansible ddns_hvvsrv101 -m ping | grep SUCCESS | wc -l) #curl --interface enx000ec79ecb52 -m 5 http://www.google.com/ | grep -i google | wc -l)
+stateof100=$(ansible ddns_hvvsrv101 -m ping | grep SUCCESS | wc -l) #curl --interface wlp2s0 -m 5 http://www.google.com/ | grep -i google | wc -l)
 if (( $stateof100 > 0 && $stateof101 > 0 )); #&& $stateof101 > 0
 then
 echo 0 > /scripts_hvv/sys_routines/if_tries_count

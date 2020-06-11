@@ -4,3 +4,4 @@ sys_routines/rtl8812au/
 vmprov/vagrant/.vagrant/
 vmprov/vagrant/*.log
 jenkins/
+ansible/group_vars/ddns_hvvsrv
