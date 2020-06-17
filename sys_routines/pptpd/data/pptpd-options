@@ -11,5 +11,5 @@ nobsdcomp
 novj
 novjccomp
 nologfd
-ms-dns 192.168.0.1
 ms-dns 8.8.8.8
+ms-dns 8.8.4.4
