@@ -1,0 +1,72 @@
+---
+
+- name: installation of docker
+  hosts: tvm1
+  become: yes
+  
+  tasks:
+   - name: apt update & upgrade
+     apt:
+      update_cache: yes
+      upgrade: yes
+
+   - name: docker docker-engine docker.io containerd runc
+     apt:
+       pkg:
+        - docker
+        - docker-engine
+        - docker.io
+        - containerd
+        - runc
+       state: absent
+
+   - name: apt update 1
+     apt:
+       update_cache: yes
+
+   - name: apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+     apt:
+        pkg: 
+        - apt-transport-https
+        - ca-certificates	   
+        - curl
+        - gnupg-agent
+        - software-properties-common
+        - net-tools
+        state: latest  
+
+   - name: apt-key add
+     apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+   - name : apt-key fingerprint 0EBFCD88
+     shell : "apt-key fingerprint 0EBFCD88"
+
+   - name: add-apt-repository
+     shell: 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
+
+   - name: apt update 2
+     apt:
+        update_cache: yes
+
+   - name: docker-ce
+     apt:
+        pkg:
+            - docker-ce
+            - docker-ce-cli
+            - containerd.io
+        state: latest
+
+   - name: apt update 3
+     apt:
+        update_cache: yes
+
+   - name: apt-key add 1
+     apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+   - name: apt update 4
+     apt:
+        update_cache: yes
