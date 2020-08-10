@@ -8,6 +8,8 @@ then
 mount /dev/sdb /bckp_hvv
 chmod -R 777 /bckp_hvv
 #
+/scripts_hvv/sys_routines/pptpd/firewall-setup.sh
+#
 vvmstatr=$(vagrant global-status | grep host | wc -l)
 let "vvmstatr=vvmstatr+1"
 ir=1

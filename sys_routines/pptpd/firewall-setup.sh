@@ -10,10 +10,9 @@
 sysctl -p
 iptables -I INPUT -p tcp --dport 1723 -m state --state NEW -j ACCEPT
 iptables -I INPUT -p gre -j ACCEPT
-ifconfig
 iptables -t nat -I POSTROUTING -o enx000ec79ecb52 -j MASQUERADE
 iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -s 192.168.127.0/24 -j TCPMSS  --clamp-mss-to-pmtu
-sudo iptables-save
-sudo iptables -P FORWARD ACCEPT
-sudo iptables -P OUTPUT ACCEPT
-sudo iptables-save
+iptables-save
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables-save
