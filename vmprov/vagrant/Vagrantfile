@@ -27,6 +27,16 @@ Vagrant.configure("2") do |config|
 #        host.vm.provision "shell",
 #                run: "always",
 #                inline: "route add default gw 192.168.0.1"
+#Custom Port Forwarding
+
+        host.vm.network "forwarded_port", guest:80, host: "#{54320 + (NODES * 2) + i}", auto_correct: true 
+        host.vm.network "forwarded_port", guest:443, host: "#{54320 + (NODES * 3) + i}", auto_correct: true
+        host.vm.network "forwarded_port", guest:5060, host: "#{54320 + (NODES * 4) + i}", auto_correct: true
+        host.vm.network "forwarded_port", guest:5160, host: "#{54320 + (NODES * 5) + i}", auto_correct: true
+        host.vm.network "forwarded_port", guest:4445, host: "#{54320 + (NODES * 6) + i}", auto_correct: true        
+        host.vm.network "forwarded_port", guest:18001, host: "#{54320 + (NODES * 7) + i}", auto_correct: true
+
+#Custom Port Forwarding
         host.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
         host.vm.provision "ssh-setup", type: "shell", :path => "ubuntu/ssh-setup.sh"
       end
