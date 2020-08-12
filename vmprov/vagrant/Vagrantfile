@@ -21,21 +21,28 @@ Vagrant.configure("2") do |config|
         host.vm.hostname = "host#{i}"
         host.vm.network :private_network, ip: IP_NW + "#{30 + i}", auto_correct: true
 #, virtualbox__intnet: true
-        host.vm.network "forwarded_port", guest: 22, host: "#{54320 +i}", auto_correct: true
+        host.vm.network "forwarded_port", guest: 22, host: "#{54320 + i}", auto_correct: true
 #        host.vm.network "public_network", :ip => IP_NW + "#{210 + i}", :netmask => '255.255.255.0', :bridge => BRIF,
         host.vm.network "forwarded_port", guest: "#{54320 + NODES  + i}", host: "#{54320 + NODES  + i}", auto_correct: true
 #        host.vm.provision "shell",
 #                run: "always",
 #                inline: "route add default gw 192.168.0.1"
 #Custom Port Forwarding
-
-        host.vm.network "forwarded_port", guest:80, host: "#{54320 + (NODES * 2) + i}", auto_correct: true 
-        host.vm.network "forwarded_port", guest:443, host: "#{54320 + (NODES * 3) + i}", auto_correct: true
-        host.vm.network "forwarded_port", guest:5060, host: "#{54320 + (NODES * 4) + i}", auto_correct: true
-        host.vm.network "forwarded_port", guest:5160, host: "#{54320 + (NODES * 5) + i}", auto_correct: true
-        host.vm.network "forwarded_port", guest:4445, host: "#{54320 + (NODES * 6) + i}", auto_correct: true        
-        host.vm.network "forwarded_port", guest:18001, host: "#{54320 + (NODES * 7) + i}", auto_correct: true
-
+        if "host#{i}" == "host1"
+           host.vm.network "forwarded_port", guest:80, host:54327, auto_correct: true 
+           host.vm.network "forwarded_port", guest:443, host:54328, auto_correct: true
+           host.vm.network "forwarded_port", guest:5060, host:5060, auto_correct: true
+           host.vm.network "forwarded_port", guest:5160, host:5160, auto_correct: true
+           host.vm.network "forwarded_port", guest:4445, host:4445, auto_correct: true        
+           host.vm.network "forwarded_port", guest:4569, host:4569, auto_correct: true
+           host.vm.network "forwarded_port", guest:18000, host:18000, auto_correct: true
+           host.vm.network "forwarded_port", guest:18001, host:18001, auto_correct: true
+           host.vm.network "forwarded_port", guest:18002, host:18002, auto_correct: true
+           host.vm.network "forwarded_port", guest:8001, host:8001, auto_correct: true
+           host.vm.network "forwarded_port", guest:8003, host:8003, auto_correct: true  
+           host.vm.network "forwarded_port", guest:8008, host:8008, auto_correct: true
+           host.vm.network "forwarded_port", guest:8009, host:8009, auto_correct: true
+        end 
 #Custom Port Forwarding
         host.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
         host.vm.provision "ssh-setup", type: "shell", :path => "ubuntu/ssh-setup.sh"
