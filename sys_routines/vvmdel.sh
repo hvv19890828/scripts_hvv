@@ -31,3 +31,5 @@ ssh-keygen -f "/home/hvv/.ssh/known_hosts" -R "[hvv19890828.ddns.net]:54325"
 #ssh-keygen -f "/home/hvv/.ssh/known_hosts" -R "192.168.0.203"
 #ssh-keygen -f "/home/hvv/.ssh/known_hosts" -R "192.168.0.204"
 #ssh-keygen -f "/home/hvv/.ssh/known_hosts" -R "192.168.0.205"
+rm /scripts_hvv/vmprov/vagrant/*.log
+rm -r /scripts_hvv/vmprov/vagrant/.vagrant/
