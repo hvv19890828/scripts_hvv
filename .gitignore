@@ -5,3 +5,4 @@ vmprov/vagrant/.vagrant/
 vmprov/vagrant/*.log
 jenkins/
 ansible/group_vars/ddns_hvvsrv
+sys_routines/motion/rec/
