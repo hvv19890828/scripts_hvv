@@ -9,6 +9,7 @@ IP_NW = "192.168.6."
 #"enx000ec79ecb52""wlp2s0"
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
+  config.disksize.size = '30GB'
   config.vm.box_check_update = true
 #  config.vm.base_mac = nil
   (NODES_START..NODES).each do |i|
@@ -32,9 +33,13 @@ Vagrant.configure("2") do |config|
            host.vm.network "forwarded_port", guest:54001, host:54001, auto_correct: true 
            host.vm.network "forwarded_port", guest:54002, host:54002, auto_correct: true
            host.vm.network "forwarded_port", guest:54003, host:54003, auto_correct: true
-           host.vm.network "forwarded_port", guest:9113, host:9113, auto_correct: true
-           
         end 
+        if "host#{i}" == "host3"
+           host.vm.network "forwarded_port", guest:54004, host:54004, auto_correct: true
+           host.vm.network "forwarded_port", guest:54005, host:54005, auto_correct: true
+           host.vm.network "forwarded_port", guest:54006, host:54006, auto_correct: true
+           
+        end
 #Custom Port Forwarding
         host.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
         host.vm.provision "ssh-setup", type: "shell", :path => "ubuntu/ssh-setup.sh"
