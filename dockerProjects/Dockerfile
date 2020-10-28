@@ -6,6 +6,8 @@ ARG PSS=user1!
 
 MAINTAINER hvv19890828 <hvv19890828@gmail.com>
 
+LABEL usver="hvv"
+
 RUN apt-get update -y  && \
     apt-get upgrade -y
 
@@ -19,9 +21,15 @@ USER hvv
 
 WORKDIR /home/hvv/
 
+#ADD ftp://foo.foo.foo.zip .
+
 COPY test .
 
+VOLUME /foo
+
 RUN echo "test build-stage 1" >> test
+
+ONBUILD RUN echo "hello"
 
 ENV TEST1 "test1"
 ENV TEST2 "test2"
