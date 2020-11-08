@@ -6,5 +6,4 @@ sudo sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/ss
 sudo cat tmp > /etc/ssh/sshd_config
 sudo service ssh restart
 echo -e "user1!\nuser1!" | sudo passwd root
-sudo apt-get update -y
-sudo apt-get upgrade -y
+sudo timedatectl set-timezone Europe/Kiev

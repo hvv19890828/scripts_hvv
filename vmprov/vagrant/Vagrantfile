@@ -35,14 +35,14 @@ Vagrant.configure("2") do |config|
            host.vm.network "forwarded_port", guest:54003, host:54003, auto_correct: true
         end 
         if "host#{i}" == "host3"
-           host.vm.network "forwarded_port", guest:54004, host:54004, auto_correct: true
+           host.vm.network "forwarded_port", guest:31199, host:54004, auto_correct: true
            host.vm.network "forwarded_port", guest:54005, host:54005, auto_correct: true
            host.vm.network "forwarded_port", guest:54006, host:54006, auto_correct: true
            
         end
 #Custom Port Forwarding
         host.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
-        host.vm.provision "ssh-setup", type: "shell", :path => "ubuntu/ssh-setup.sh"
+        host.vm.provision "ssh-setup", type: "shell", :path => "ubuntu/common-setup.sh"
       end
   end
 end
