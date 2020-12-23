@@ -555,4 +555,4 @@
   555  git status
   556  history > /scripts_hvv/sys_routines/historybckp 
 docker run --name=jarvis --restart=always -d -p 55699:8080 -p 50000:50000 -v /scripts_hvv/jenkins:/var/jenkins_home jenkins/jenkins
-sudo docker run -d --restart=always -p 55799:8765 -p 55899:8081 -v /etc/localtime:/etc/localtime:ro -v /scripts_hvv/sys_routines/motion/conf:/etc/motioneye -v /scripts_hvv/sys_routines/motion/rec:/var/lib/motioneye --device /dev/video0  ccrisan/motioneye:master-amd64
+docker run -d --restart=always -p 55799:8765 -p 55899:8081 -v /etc/localtime:/etc/localtime:ro -v /scripts_hvv/sys_routines/motion/conf:/etc/motioneye -v /scripts_hvv/sys_routines/motion/rec:/var/lib/motioneye --device /dev/fb0 --device /dev/media0 --device /dev/media1 --device /dev/video0 --device /dev/video1 --device /dev/video2 --device /dev/video3 ccrisan/motioneye:master-amd64
