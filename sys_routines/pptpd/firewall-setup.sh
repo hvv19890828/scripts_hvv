@@ -16,3 +16,6 @@ iptables-save
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables-save
+iptables --table nat --append POSTROUTING --out-interface vboxnet1 -j MASQUERADE
+iptables --append FORWARD --in-interface wlp2s0  -j ACCEPT
+iptables-save

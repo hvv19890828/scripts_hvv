@@ -1,6 +1,6 @@
 ---
 - name : k8s_kubeadm_cluster_setup
-  hosts : k8s
+  hosts : k8s   
   become: yes
   
   roles:
@@ -8,3 +8,4 @@
     - role: master
       when: inventory_hostname == "{{masterHost}}"
     - worker
+
