@@ -83,9 +83,10 @@
   blockinfile:
    path: /etc/hosts
    block: |
-    192.168.6.32  host2
-    192.168.6.33  host3
-    192.168.6.34  host4
+    192.168.6.32   host2
+    192.168.6.33   host3
+    192.168.6.34   host4
+    192.168.0.210  host5
 
 - name: apt update 3
   apt:
