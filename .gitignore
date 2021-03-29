@@ -7,3 +7,7 @@ jenkins/
 ansible/group_vars/ddns_hvvsrv
 ansible/group_vars/all1
 sys_routines/motion/rec/
+sys_routines/motion/conf/
+sys_routines/pptpd/data/chap-secrets
+sys_routines/deluge/config/
+
