@@ -96,7 +96,7 @@
    96  sudo systemctl start NetworkManager.service
    97  sudo systemctl enable NetworkManager.service
    98  nmcli d wifi list ifname wlp2s0
-   99  nmcli d wifi connect "peach_ac" password bF701fE08c ifname wlp2s0
+   99  nmcli d wifi connect "peach_ac" password pass ifname wlp2s0
   100  ifconfig
   101  apt update -y
   102  apt upgrade -y
