@@ -1,0 +1,36 @@
+---
+# tasks file for master
+
+- name: Get ifconfig on master
+  shell: ifconfig | grep -A1 enp0s8 | grep inet
+  register: MIFReg
+- name: Get IP on master
+  set_fact:
+    MIFRes: "{{ MIFReg.stdout | regex_search(MIFRGXP) }}"
+  vars:
+    MIFRGXP: '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
+
+- set_fact: kubeadmInit="kubeadm init --pod-network-cidr=10.244.0.0/16 --service-cidr=10.244.240.0/20 --service-dns-domain=cluster.local --apiserver-advertise-address={{MIFRes}}"
+
+- name: kubeadm init 
+  shell: "{{kubeadmInit}}"
+
+- name: create .kube
+  shell: "mkdir -p $HOME/.kube"
+
+- name: copy config file
+  shell: "cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
+
+- name: config chown
+  shell: "chown $(id -u):$(id -g) $HOME/.kube/config"
+
+- name: add flannel.yaml
+  copy: src=flannel.yaml dest=/ mode=0775
+  
+- name : Apply CNI
+  shell : "kubectl apply -f /flannel.yaml"
+
+- name: remove flannel.yaml
+  file:
+   path: /flannel.yaml
+   state: absent

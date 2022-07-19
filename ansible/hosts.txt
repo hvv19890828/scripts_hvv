@@ -1,0 +1,28 @@
+[ddns_hvvsrv]
+ddns_hvvsrv100 ansible_host=hvv19890828.ddns.net ansible_port=55299
+ddns_hvvsrv101 ansible_host=hvv19890828.ddns.net ansible_port=55399
+
+[tvm]
+tvm1 ansible_host=127.0.0.1 ansible_port=54321
+tvm2 ansible_host=127.0.0.1 ansible_port=54322
+tvm3 ansible_host=127.0.0.1 ansible_port=54323
+tvm4 ansible_host=127.0.0.1 ansible_port=54324
+tvm4 ansible_host=192.168.0.210 ansible_port=22
+
+[ddns_tvm]
+ddns_tvm1 ansible_host=hvv19890828.ddns.net ansible_port=54321
+ddns_tvm2 ansible_host=hvv19890828.ddns.net ansible_port=54322
+ddns_tvm3 ansible_host=hvv19890828.ddns.net ansible_port=54323
+ddns_tvm4 ansible_host=hvv19890828.ddns.net ansible_port=54324
+ddns_tvm5 ansible_host=hvv19890828.ddns.net ansible_port=54329
+
+[k8s]
+k8s1 ansible_host=127.0.0.1 ansible_port=54322
+#k8s2 ansible_host=127.0.0.1 ansible_port=54323
+#k8s3 ansible_host=127.0.0.1 ansible_port=54324
+k8s4 ansible_host=192.168.0.210 ansible_port=22
+
+[all1:children]
+tvm
+ddns_tvm
+k8s

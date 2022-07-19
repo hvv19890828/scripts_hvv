@@ -1,0 +1,46 @@
+---
+- name : test playbook
+  hosts : tvm
+  become: yes
+  
+  vars :
+    src1 : ./playbook1.yml
+    dst : / 
+  
+  tasks:
+  - name : ping
+    ping :
+  - block:
+     - name : apache
+       apt : name=apache2 state=latest
+     - name: apache service
+       service: name=apache2 state=started enabled=yes
+    when : ansible_os_family == "Debian"
+  - block:
+     - name : tree
+       apt : name=tree state=latest
+    when : ansible_os_family == "Debian"
+  - name : tree_tree
+    shell : "tree"
+  - name : date
+    shell : "date"
+    register: result
+  - debug:
+     var: result
+  - name : copy file
+    copy: src={{src1}} dest={{dst}} mode=777
+    notify : handler1
+  - debug:
+     msg: "srv: {{result}} "
+  - copy : src=./temp/index.html  dest=/var/www/html/ mode=777
+    notify : apache2_service_r 
+  - set_fact: full_messagex="blbla{{src1}}"
+  - debug:
+     var: full_messagex
+
+  handlers :
+  - name : handler1
+    shell : "ls -alt"
+  - name: apache2_service_r
+    service: name=apache2 state=restarted
+    when : ansible_os_family == "Debian"

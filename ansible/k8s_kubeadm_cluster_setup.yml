@@ -1,0 +1,27 @@
+---
+- name : k8s_kubeadm_cluster_setup
+  hosts : k8s   
+  become: yes
+  
+  roles:
+    - common
+    - role: master
+      when: inventory_hostname == "{{masterHost}}"
+    - worker
+
+#tvm5 network interface netplan settings
+#network:
+#  ethernets:
+#    enp0s3:
+#      match:
+#        macaddress: 08:00:27:62:9f:a1
+#      addresses:
+#      - 192.168.0.210/24
+#      gateway4: 192.168.0.1
+#      nameservers:
+#        addresses:
+#        - 8.8.8.8
+#        - 192.168.0.1
+#      set-name: enp0s8
+#  version: 2
+

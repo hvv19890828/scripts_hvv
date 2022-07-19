@@ -1,0 +1,132 @@
+---
+# tasks file for common---
+  
+- name: apt update & upgrade
+  apt:
+   update_cache: yes
+   upgrade: yes
+
+- name: Module br_netfilter up
+  modprobe:
+   name: br_netfilter
+   state: present
+
+- name: Create and configure k8s.conf
+  copy:
+   dest: "/etc/sysctl.d/k8s.conf"
+   content: |
+    net.bridge.bridge-nf-call-ip6tables = 1
+    net.bridge.bridge-nf-call-iptables = 1
+
+- name : Enable bridging
+  shell : "sysctl net.bridge.bridge-nf-call-iptables=1"
+    
+- name : sysctl --system
+  shell : "sysctl --system"
+    
+- name : sudo swapoff -a
+  shell : "swapoff -a"
+
+- name: docker docker-engine docker.io containerd runc
+  apt:
+   pkg:
+   - docker
+   - docker-engine
+   - docker.io
+   - containerd
+   - runc
+   state: absent
+
+- name: apt update 1
+  apt:
+    update_cache: yes
+
+- name: apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+  apt:
+   pkg: 
+    - apt-transport-https
+    - ca-certificates	   
+    - curl
+    - gnupg-agent
+    - software-properties-common
+    - net-tools
+   state: latest  
+
+- name : apt-key add
+#    shell : "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
+  apt_key:
+   url: https://download.docker.com/linux/ubuntu/gpg
+   state: present
+
+- name : apt-key fingerprint 0EBFCD88
+  shell : "apt-key fingerprint 0EBFCD88"
+
+- name : add-apt-repository
+  shell : 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
+#  apt_repository:
+#   repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+#   state: present
+
+- name: apt update 2
+  apt:
+    update_cache: yes
+
+- name: docker-ce
+  apt:
+   pkg:
+   - docker-ce
+   - docker-ce-cli
+   - containerd.io
+   state: latest
+
+- name: Copy to /etc/hosts
+  blockinfile:
+   path: /etc/hosts
+   block: |
+    192.168.6.32  host2
+    192.168.6.33  host3
+    192.168.6.34  host4
+
+- name: apt update 3
+  apt:
+    update_cache: yes
+
+- name : apt-key add 1
+#    shell : "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -"
+  apt_key:
+   url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+   state: present
+
+- name: Copy to kubernetes.list
+  copy:
+   dest: "/etc/apt/sources.list.d/kubernetes.list"
+   content: |
+    deb https://apt.kubernetes.io/ kubernetes-xenial main
+
+- name: apt update 4
+  apt:
+    update_cache: yes  
+  
+- name: kubelet kubeadm kubectl
+  apt:
+   pkg:
+   - kubelet
+   - kubeadm
+   - kubectl
+   state: latest
+
+- name : apt-mark
+  shell : "apt-mark hold kubelet kubeadm kubectl"
+
+- name: Reboot
+  shell: sleep 3 && reboot now
+  async: 1
+  poll: 0
+
+- name: Wait
+  wait_for:
+      host: "{{ inventory_hostname }}"
+      state: started
+      delay: 5
+      timeout: 40
+  delegate_to: 127.0.0.1

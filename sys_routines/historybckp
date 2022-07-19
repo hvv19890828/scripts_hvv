@@ -1,0 +1,558 @@
+    1  apt-get update
+    2  apt-get upgrade -y
+    3  sudo reboot
+    4  apt-get update
+    5  apt-get upgrade -y
+    6  uname -r
+    7  lsblk
+    8  sudo reboot
+    9  lsblk
+   10  ifconfig
+   11  nmcli con
+   12  iwconfig
+   13  apt update
+   14  apt upgrade
+   15  reboot
+   16  mkdir /home/hvv/Downloads
+   17  chmod -R 777 /home/hvv/Downloads
+   18  mkdir /bckp_hvv
+   19  chmod -R 777 /bckp_hvv/
+   20  cd /
+   21  l
+   22  git clone https://github.com/hvv19890828/scripts_hvv.git
+   23  l
+   24  cd scripts_hvv/
+   25  l
+   26  ll
+   27  cd sys_routines/
+   28  l
+   29  ll
+   30  chmod -R 777 /scripts_hvv/
+   31  ll
+   32  cat ifpresense.sh 
+   33  ll
+   34  nano bashrcbckp 
+   35  nano ~/.bashrc 
+   36  cat bashrcbckp 
+   37  nano ~/.bashrc 
+   38  source ~/.bashrc 
+   39  l
+   40  nano refresh_network.sh 
+   41  cat bckp.sh 
+   42  cat bckp_state_check.sh 
+   43  ll
+   44  cat gracefull_system_restart.sh 
+   45  cat vvmdel.sh 
+   46  cat vvmup.sh 
+   47  cd ..
+   48  cd vmprov/vagrant/
+   49  ifconfig
+   50  nano Vagrantfile 
+   51  cd ..
+   52  cd sys_routines/
+   53  ll
+   54  l
+   55  cat refresh_network.sh 
+   56  lspci 
+   57  lsmod 
+   58  lsmod | grep iwlwifi
+   59  lspci 
+   60  apt update && apt install firmware-iwlwifi
+   61  sudo nano /etc/apt/sources.list
+   62  apt-get update
+   63  sudo nano /etc/apt/sources.list
+   64  apt-get update
+   65  sudo nano /etc/apt/sources.list
+   66  apt-get update
+   67  sudo nano /etc/apt/sources.list
+   68  cat /etc/apt/sources.list > tmp
+   69  l
+   70  cat tmp 
+   71  sudo nano /etc/apt/sources.list
+   72  apt-get update
+   73  clear
+   74  apt-get update
+   75  sudo nano /etc/apt/sources.list
+   76  apt-get update
+   77  cat tmp > /etc/apt/sources.list 
+   78  sudo nano /etc/apt/sources.list
+   79  apt-get update
+   80  sudo nano /etc/apt/sources.list
+   81  apt-get update
+   82  sudo nano /etc/apt/sources.list
+   83  apt-get update
+   84  nano refresh_network.sh 
+   85  cd /sys/bus/pci/devices/0000:02:00.0
+   86  l
+   87  cd /scripts_hvv/sys_routines/
+   88  ./refresh_network.sh 
+   89  ifconfig
+   90  nmcli d wifi list ifname wlp2s0
+   91  apt install network-manager
+   92  nmcli d wifi list ifname wlp2s0
+   93  chmod +x /etc/rc.d/rc.networkmanager
+   94  sudo start network-manager
+   95  start network-manager
+   96  sudo systemctl start NetworkManager.service
+   97  sudo systemctl enable NetworkManager.service
+   98  nmcli d wifi list ifname wlp2s0
+   99  nmcli d wifi connect "peach_ac" password pass ifname wlp2s0
+  100  ifconfig
+  101  apt update -y
+  102  apt upgrade -y
+  103  reboot
+  104  cd /scripts_hvv/sys_routines/
+  105  ./refresh_network.sh 
+  106  ifconfig
+  107  apt update -y
+  108  apt upgrade -y
+  109  nmcli con
+  110  sudo add-apt-repository multiverse && sudo apt-get update
+  111  sudo apt install virtualbox
+  112  sudo apt install virtualbox-ext-pack
+  113  sudo apt update
+  114  ll
+  115  cd /scripts_hvv/
+  116  l
+  117  cat .gitignore 
+  118  mkdir temp
+  119  chmod -R 777 temp/
+  120  touch tmp
+  121  chmod 777 tmp 
+  122  cd temp/
+  123  apt update
+  124  apt upgrade
+  125  apt update
+  126  apt upgrade
+  127  sudo reboot
+  128  cd /scripts_hvv/temp/
+  129  curl -O https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.deb
+  130  l
+  131  chmod 777 vagrant_2.2.7_x86_64.deb 
+  132  l
+  133  sudo apt install vagrant_2.2.7_x86_64.deb 
+  134  sudo apt update
+  135  l
+  136  sudo apt install ./vagrant_2.2.7_x86_64.deb 
+  137  vagrant --version
+  138  cd ..
+  139  cd vmprov/vagrant/
+  140  vvmup
+  141  vvmdel
+  142  rbt
+  143  chmod -R 777 /scripts_hvv/
+  144  chmod -R 777 /scripts_hvv
+  145  sudo apt-get install preload
+  146  sudo swapoff -v /swapfile
+  147  sudo swapoff -a
+  148  cat /etc/fstab
+  149  nano /etc/fstab
+  150  cat /etc/systemd/resolved.conf
+  151  sed -i -e 's/#DNS=/DNS=8.8.8.8/' /etc/systemd/resolved.conf
+  152  cat /etc/systemd/resolved.conf
+  153  service systemd-resolved restart
+  154  sudo reboot
+  155  ifconfig
+  156  top
+  157  vvmup
+  158  rbt
+  159  apt-get update
+  160  apt-get install gnupg
+  161  vvmdel
+  162  history | grep deb
+  163  history | grep list
+  164  nano /etc/apt/sources.list
+  165  echo "" > /etc/apt/sources.list
+  166  nano /etc/apt/sources.list
+  167  apt-get update
+  168  apt-get upgrade
+  169  vvmdel
+  170  rbt
+  171  vvmup
+  172  vvmdel
+  173  cd /scripts_hvv/vmprov/vagrant/ubuntu
+  174  l
+  175  nano ssh-setup.sh 
+  176  rbt
+  177  vvmup
+  178  lsb_release -a
+  179  echo "" > /etc/apt/sources.list
+  180  nano /etc/apt/sources.list
+  181  cd /scripts_hvv/temp/
+  182  l
+  183  rm vagrant_2.2.7_x86_64.deb 
+  184  cd ..
+  185  l
+  186  cat tmp
+  187  cd sys_routines/
+  188  l
+  189  cat tmp 
+  190  history | grep tmp 
+  191  cat tmp > /etc/apt/sources.list
+  192  nano /etc/apt/sources.list
+  193  history
+  194  sudo add-apt-repository multiverse && sudo apt-get update
+  195  source ~/.bashrc 
+  196  vvmdel
+  197  rbt
+  198  cd /scripts_hvv/vmprov/vagrant/
+  199  nano Vagrantfile 
+  200  vvmdel
+  201  nano ubuntu/ssh-setup.sh 
+  202  vvmup
+  203  nano ubuntu/ssh-setup.sh 
+  204  vvmdel
+  205  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  206  nano Vagrantfile 
+  207  cd ..
+  208  cd sys_routines/
+  209  ./bckp_state_check.sh 
+  210  history
+  211  ifconfig
+  212  sudo apt-get remove docker docker-engine docker.io containerd runc
+  213  apt update
+  214  sudo apt-get remove docker docker-engine docker.io containerd runc
+  215  sudo apt-get update
+  216  $ sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
+  217  sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
+  218  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  219  sudo apt-key fingerprint 0EBFCD88
+  220  sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  221     $(lsb_release -cs) \
+  222     stable"
+  223  sudo apt-get update
+  224  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  225  sudo docker run hello-world
+  226  docker ps
+  227  ll /home/hvv/Downloads/
+  228  ll /home/hvv/Downloads/Downloads/
+  229  cd /scripts_hvv/temp/
+  230  mv /home/hvv/Downloads/Downloads/* /home/hvv/Downloads/
+  231  ll /home/hvv/Downloads/Downloads/
+  232  ll /home/hvv/Downloads
+  233  ll /home/hvv/Downloads/Downloads/
+  234  mv -r /home/hvv/Downloads/Downloads/* /home/hvv/Downloads/
+  235  mv -R /home/hvv/Downloads/Downloads/* /home/hvv/Downloads/
+  236  rm -r /home/hvv/Downloads/Downloads/
+  237  ll /home/hvv/Downloads/Downloads/
+  238  ll /home/hvv/Downloads
+  239  cd /scripts_hvv/temp/
+  240  l
+  241  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  242  sudo chmod +x /usr/local/bin/docker-compose
+  243  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  244  docker-compose --version
+  245  cd /scripts_hvv/sys_routines/
+  246  ./bckp_state_check.sh 
+  247  lsblk
+  248  rsync -a --delete  /bckp_hvv/Downloads /home/hvv/Downloads/
+  249  ./bckp.sh 
+  250  cat cronbckp 
+  251  nano cronbckp 
+  252  nano /etc/crontab 
+  253  l
+  254  rm tmp 
+  255  ll /bckp_hvv/
+  256  ll /bckp_hvv/Downloads/
+  257  chmod -R 775 /scripts_hvv/ansible/
+  258  apt update
+  259  rbt
+  260  sudo nano /etc/apt/sources.list
+  261  ll
+  262  ll /etc/apt/
+  263  cat /etc/apt/sources.list.save
+  264  sudo nano /etc/apt/sources.list.save1
+  265  ll /etc/apt/
+  266  rm /etc/apt/sources.list.save.1
+  267  rm /etc/apt/sources.list.save 
+  268  cat /etc/apt/sources.list.curtin.old 
+  269  ll /etc/apt/
+  270  sudo nano /etc/apt/sources.list
+  271  apt update
+  272  apt upgrade
+  273  rbt
+  274  ll /bckp_hvv/
+  275  ll /bckp_hvv/Downloads/
+  276  history | grep update
+  277  sudo add-apt-repository multiverse && sudo apt-get update
+  278  docker run --name SAMBA --restart always --network host -v /home/hvv/Downloads:/SAMBA -id chasim1982/samba
+  279  docker ps
+  280  docker exec -it 12c5a266e8e8 bash
+  281  docker ps
+  282  docker commit 12c5a266e8e8 hvvsmb
+  283  docker stop 12c5a266e8e8
+  284  docker rm 12c5a266e8e8
+  285  docker ps -a
+  286  docker rm 48c44cd22004
+  287  docker ps -a
+  288  docker images
+  289  docker rmi bf756fb1ae65
+  290  docker run --name SAMBA --restart always --network host -v /home/hvv/Downloads:/SAMBA -id hvvsmb
+  291  cat /etc/default/ufw
+  292  modprobe nf_conntrack_pptp nf_nat_pptp
+  293  cd /scripts_hvv/sys_routines/pptpd/
+  294  l
+  295  docker-compose up --build -d
+  296  cd ..
+  297  l
+  298  history > /scripts_hvv/sys_routines/historybckp
+  299  l
+  300  chmod 777 historybckp 
+  301  cd ..
+  302  cd vmprov/vagrant/
+  303  cd  ubuntu
+  304  nano ssh-setup.sh 
+  305  cd ..
+  306  vvmup
+  307  vvmdel
+  308  nano ubuntu/ssh-setup.sh 
+  309  l
+  310  rm -r .vagrant/
+  311  rm ubuntu-bionic-18.04-cloudimg-console.log 
+  312  history | grep vagrant
+  313  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  314  vagrant box list 
+  315  vvmdel
+  316  cd ..
+  317  l
+  318  nano .gitignore 
+  319  cp -r /home/hvv/Downloads/tmp/scripts_hvv/ansible/temp/ /scripts_hvv/ansible/
+  320  ll /scripts_hvv/ansible/
+  321  ll /scripts_hvv/ansible/temp/
+  322  chmod -R 777 /scripts_hvv/ansible/temp/
+  323  cd sys_routines/
+  324  l
+  325  vvmdel
+  326  apt update
+  327  sudo apt-add-repository ppa:ansible/ansible
+  328  sudo apt-get update
+  329  sudo apt-get install ansible
+  330  ansible --version
+  331  sudo apt-get update
+  332  sudo apt-get upgrade
+  333  reboot
+  334  rm -r /home/hvv/Downloads/tmp/scripts_hvv/
+  335  iptables -S
+  336  vvmdel
+  337  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  338  reboot
+  339  vvmup
+  340  curl http://archive.ubuntu.com/ubuntu
+  341  vvmdel
+  342  cd /scripts_hvv/vmprov/vagrant/
+  343  vvmdel
+  344  vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f
+  345  nano Vagrantfile 
+  346  l
+  347  ll .vagrant/
+  348  ll .vagrant/machines/
+  349  ll .vagrant/machines/node1
+  350  ll .vagrant/machines/node1/virtualbox/
+  351  cat .vagrant/machines/node1/virtualbox/vagrant_cwd 
+  352  l
+  353  vvmdel
+  354  vvmup
+  355  vvmdel
+  356  nano ubuntu/ssh-setup.sh 
+  357  nano Vagrantfile 
+  358  vvmup
+  359  nano /scripts_hvv/vmprov/vagrant/Vagrantfile 
+  360  /scripts_hvv/sys_routines/refresh_network.sh 
+  361  rbt
+  362  /scripts_hvv/sys_routines/refresh_network.sh 
+  363  date
+  364  reboot
+  365  timedatectl
+  366  timedatectl list-timezones
+  367  sudo timedatectl set-timezone Europe/Kiev
+  368  timedatectl
+  369  apt update
+  370  apt-get update -y
+  371  apt-get upgrade -y
+  372  timedatectl
+  373  sudo timedatectl set-ntp off
+  374  timedatectl
+  375  sudo timedatectl set-ntp on
+  376  timedatectl
+  377  date
+  378  sudo reboot
+  379  reboot
+  380  vvmup
+  381  vvmdel
+  382  iptables -S
+  383  nano /scripts_hvv/vmprov/vagrant/ubuntu/ssh-setup.sh 
+  384  vvmup
+  385  sudo apt-get update && sudo-apt-get dist-upgrade
+  386  sudo apt-get update && sudo apt-get dist-upgrade
+  387  sudo apt-get update && sudo apt full-upgrade
+  388  iptables -S
+  389  vvmdel
+  390  ifconfig
+  391  source ~/.bashrc 
+  392  reboot
+  393  nano /scripts_hvv/vmprov/vagrant/Vagrantfile 
+  394  vvmup
+  395  nano /scripts_hvv/vmprov/vagrant/ubuntu/ssh-setup.sh 
+  396  history
+  397  cd /scripts_hvv/vmprov/vagrant/
+  398  vagrant suspend
+  399  vagrant resume
+  400  rbt
+  401  vagrant status
+  402  cd /scripts_hvv/vmprov/vagrant/
+  403  vagrant status
+  404  ifconfig
+  405  vagrant status
+  406  l
+  407  git status
+  408  git add .
+  409  git commit -m "aftermoved to ubuntu-lite-server"
+  410  git config -l
+  411  git config --global user.name "Viacheslav Hudzovskyi"
+  412  git config --global user.email "hvv19890828@gmail.com"
+  413  git status
+  414  git add .
+  415  git commit -m "aftermoved to ubuntu-lite-server"
+  416  git status
+  417  git push origin
+  418  git status
+  419  rbt
+  420  ssh hvv@192.168.0.100
+  421  sudo cat /root/.ssh/known_hosts
+  422  cd /scripts_hvv/sys_routines/
+  423  cat vagrant_suspend.sh > vagrant_resume.sh 
+  424  chmod 777 vagrant_resume.sh 
+  425  nano vagrant_resume.sh 
+  426  nano vagrant_suspend.sh 
+  427  nano vagrant_resume.sh 
+  428  vagrant status | grep node | wc -l
+  429  l
+  430  cat bckp_state_check.sh 
+  431  nano bckp_state_check.sh 
+  432  /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  433  nano /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  434  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  435  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  436  vvmdel
+  437  ll
+  438  nano gracefull_system_restart.sh 
+  439  nano refresh_network.sh 
+  440  cat /scripts_hvv/sys_routines/vagrant_suspend.sh
+  441  vvmdel
+  442  cd ..
+  443  cd ansible/
+  444  nano hosts.txt 
+  445  vvmdel
+  446  cat /scripts_hvv/vmprov/v
+  447  nano /etc/ssh/sshd_config
+  448  sudo service ssh restart
+  449  ifconfig
+  450  cd /scripts_hvv/vmprov/vagrant
+  451  vagrant resume
+  452  vagrant resume node1
+  453  vagrant suspend node1
+  454  vagrant list
+  455  vagrant global-status
+  456  vagrant status
+  457  vagrant up
+  458  vagrant global-status
+  459  vagrant global-status | grep node
+  460  vagrant global-status | grep node | wc -l
+  461  vagrant up
+  462  vagrant global-status | grep node | wc -l
+  463  nano Vagrantfile 
+  464  vagrant up
+  465  nano Vagrantfile 
+  466  vvmdel
+  467  nano Vagrantfile 
+  468  vagrant up
+  469  vagrant global-status | grep node | wc -l
+  470  nano Vagrantfile 
+  471  vagrant up
+  472  vagrant global-status | grep node | wc -l
+  473  top
+  474  vvmdel
+  475  nano Vagrantfile 
+  476  vvmdel
+  477  vagrant global-status | grep node | wc -l
+  478  cd ..
+  479  cd sys_routines/
+  480  nano vvmdel.sh 
+  481  vvmdel
+  482  cat bckp.sh > vagrant_suspend.sh
+  483  nano vagrant_suspend.sh
+  484  chmod 777  vagrant_suspend.sh
+  485  cd ..
+  486  cd vmprov/vagrant/
+  487  nano Vagrantfile 
+  488  vagrant up
+  489  nano Vagrantfile 
+  490  vagrant up
+  491  vagrant status | grep node | wc -l
+  492  vagrant status
+  493  nano Vagrantfile 
+  494  vagrant status
+  495  vagrant status | grep node | wc -l
+  496  nano Vagrantfile 
+  497  vvmdel
+  498  nano Vagrantfile 
+  499  vvmdel
+  500  nano Vagrantfile 
+  501  vvmup
+  502  vagrant status
+  503  nano Vagrantfile 
+  504  rbt
+  505  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  506  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  507  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  508  cd /scripts_hvv/vmprov/vagrant/
+  509  nano Vagrantfile 
+  510  vvmup
+  511  vagrant global-status
+  512  cd ..
+  513  vagrant global-status
+  514  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  515  /scripts_hvv/sys_routines/vagrant_suspend.sh
+  516  vagrant global-status
+  517  nano /scripts_hvv/sys_routines/vagrant_suspend.sh
+  518  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  519  vagrant global-statu
+  520  vagrant global-status
+  521  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  522  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  523  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  524  nano /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  525  /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  526  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  527  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  528  /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  529  /scripts_hvv/sys_routines/vagrant_resume.sh 
+  530  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  531  cd ..
+  532  nano /scripts_hvv/sys_routines/vagrant_suspend.sh 
+  533  nano /scripts_hvv/sys_routines/vagrant_resume.sh 
+  534  cd /scripts_hvv/sys_routines/
+  535  l
+  536  nano gracefull_system_restart.sh 
+  537  nano bckp_state_check.sh 
+  538  nano gracefull_system_restart.sh 
+  539  nano bckp_state_check.sh 
+  540  l
+  541  nano refresh_network.sh 
+  542  vvmdel
+  543  vagrant global-status
+  544  vvmup
+  545  rbt
+  546  cd .
+  547  cd ..
+  548  cd ansible/
+  549  cd temp/
+  550  cd ...
+  551  cd ..
+  552  git status
+  553  git add .
+  554  git commit -m "vagrant related"
+  555  git status
+  556  history > /scripts_hvv/sys_routines/historybckp 
+docker run --name=jarvis --restart=always -d -p 55699:8080 -p 50000:50000 -v /scripts_hvv/jenkins:/var/jenkins_home jenkins/jenkins
+docker run -d --restart=always -p 55799:8765 -p 55899:8081 -v /etc/localtime:/etc/localtime:ro -v /scripts_hvv/sys_routines/motion/conf:/etc/motioneye -v /scripts_hvv/sys_routines/motion/rec:/var/lib/motioneye --device /dev/video0 --device /dev/video1 --device /dev/video2 --device /dev/video3 ccrisan/motioneye:master-amd64

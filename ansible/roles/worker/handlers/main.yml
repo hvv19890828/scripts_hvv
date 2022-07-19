@@ -1,0 +1,9 @@
+---
+# handlers file for worker
+
+- name: kubelet-service-reconfig-handle1
+  shell: "systemctl daemon-reload"
+
+
+- name: kubelet-service-reconfig-handle2
+  shell: "systemctl restart kubelet"
