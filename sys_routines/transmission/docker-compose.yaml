@@ -1,0 +1,15 @@
+---
+version: "2.1"
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - TZ=Europe/Kiev
+    volumes:
+      - /scripts_hvv/sys_routines/transmission/config:/config
+      - /home/hvv/Downloads/tmp/tor:/downloads
+      - /home/hvv/Downloads/tmp/tor:/watch
+    network_mode: host
+    restart: unless-stopped
+
