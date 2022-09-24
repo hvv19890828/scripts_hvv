@@ -13,7 +13,10 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 *  *    * * *   root    /scripts_hvv/sys_routines/refresh_network.sh
-@reboot         root    /scripts_hvv/sys_routines/bckp_state_check.sh
+@reboot         root    /scripts_hvv/sys_routines/post_rbt_sys_set.sh
+@reboot         root    /scripts_hvv/sys_routines/firewall-setup.sh
 0  4    * * *   root    /scripts_hvv/sys_routines/bckp.sh
+#31 *    * * *   root    cd /scripts_hvv/sys_routines/transmission/ && docker-compose restart
 0  3    * * 1   root    apt-get update -y && apt-get upgrade -y && /scripts_hvv/sys_routines/gracefull_system_restart.sh
+30 *    * * *   root    chmod -R 777 /home/hvv/Downloads/
 #
