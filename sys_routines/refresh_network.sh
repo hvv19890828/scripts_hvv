@@ -1,6 +1,8 @@
 #!/bin/bash
-
-#vars initialization
+stateofAC=$(cat /sys/class/power_supply/ACAD/online)
+#verification
+if (( $stateofAC == 1 ));
+then
 ssh -i /root/.ssh/id_rsa -q hvv@hvv19890828.ddns.net -p 55399 exit
 stateof101=$(echo $?) #curl --interface enx000ec79ecb52 -m 5 http://www.google.com/ | grep -i google | wc -l)
 ssh -i /root/.ssh/id_rsa -q hvv@hvv19890828.ddns.net -p 55299 exit
@@ -102,5 +104,6 @@ ip link set enx000ec79ecb52 up
 sudo service ssh restart
 let "if_tries_counter101=if_tries_counter101+1"
 echo $if_tries_counter101 > /scripts_hvv/sys_routines/if_tries_count101
+fi
 fi
 fi
