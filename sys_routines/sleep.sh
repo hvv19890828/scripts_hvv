@@ -18,8 +18,9 @@ vVMSavedState=$(vagrant global-status | grep "virtualbox saved" | wc -l)
 if (( $vVMSavedState != 0 ));
 then
 sleep 60
-/scripts_hvv/sys_routines/firewall-setup.sh
 /scripts_hvv/sys_routines/vagrant_resume.sh
+sleep 3
+/scripts_hvv/sys_routines/firewall-setup.sh
 fi
 fi
 

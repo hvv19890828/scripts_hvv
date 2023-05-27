@@ -1,6 +1,7 @@
 #!/bin/bash
 cd /scripts_hvv/vmprov/vagrant/
 vagrant destroy
+ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.0.210"
 ssh-keygen -f "/root/.ssh/known_hosts" -R "[127.0.0.1]:54321"
 ssh-keygen -f "/root/.ssh/known_hosts" -R "[127.0.0.1]:54322"
 ssh-keygen -f "/root/.ssh/known_hosts" -R "[127.0.0.1]:54323"

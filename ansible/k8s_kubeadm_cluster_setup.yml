@@ -14,7 +14,7 @@
 #  ethernets:
 #    enp0s3:
 #      match:
-#        macaddress: 08:00:27:62:9f:a1
+#        macaddress: xx:xx:xx:xx:xx:xx #Must be the current enp0s3 MAC
 #      addresses:
 #      - 192.168.0.210/24
 #      gateway4: 192.168.0.1
@@ -24,4 +24,8 @@
 #        - 192.168.0.1
 #      set-name: enp0s8
 #  version: 2
-
+#sudo timedatectl set-timezone Europe/Kiev
+#To be done on host5 hostmaschine:
+# In Windows, go to VirtualBox installation folders ->
+# Type cmd on the bar (it will pop up cmd in that folder) ->
+# Type VBoxManage modifyvm <YourVirtualMachineName> --nested-hw-virt on -> enter.
