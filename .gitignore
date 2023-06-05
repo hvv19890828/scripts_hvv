@@ -1,3 +1,4 @@
+#Common
 nul
 temp/
 tmp
@@ -12,3 +13,30 @@ sys_routines/motion/rec/
 sys_routines/motion/conf/
 sys_routines/pptpd/data/chap-secrets
 sys_routines/transmission/config/
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+**/.terraform.lock.hcl
+**/*.pem
+
+# OS X
+.history
+.DS_Store
+
+# IntelliJ
+.idea_modules
+*.iml
+*.iws
+*.ipr
+.idea/
+build/
+*/build/
+out/
+
+# VSCode
+.vscode/
+
+# Terragrunt
+.terragrunt-cache
