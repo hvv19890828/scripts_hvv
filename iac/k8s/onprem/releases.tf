@@ -42,11 +42,10 @@ resource "helm_release" "metrics_server" {
 }
 
 resource "helm_release" "csi_driver_smb" {
-  name       = "csi-driver-smb"
-  repository = "https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts"
-  chart      = "csi-driver-smb"
-  version    = "v1.11.0"
-  namespace  = "kube-system"
+  name              = "hvv-csi-driver-smb"
+  chart             = "${path.module}/charts/csi-driver-smb"
+  dependency_update = true
+  namespace         = "kube-system"
   values = [templatefile("${path.module}/charts/csi-driver-smb/values/helm-values.yaml", {
     #    key   = value,
     #    key   = value
