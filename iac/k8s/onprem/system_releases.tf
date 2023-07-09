@@ -1,3 +1,4 @@
+###ISTIO###
 resource "helm_release" "istio_base" {
   name             = "istio-base"
   repository       = "https://istio-release.storage.googleapis.com/charts"
@@ -5,10 +6,10 @@ resource "helm_release" "istio_base" {
   version          = "1.17.2"
   namespace        = "istio-system"
   create_namespace = true
-  #  values = [templatefile("${path.module}/charts/kong/values/helm-values.yaml", {
-  #    key   = value,
-  #    key   = value
-  #  })]
+  #values = [templatefile("${path.module}/charts/istio-base/values/helm-values.yaml", {
+  #  key   = value,
+  #  key   = value
+  #})]
 }
 
 resource "helm_release" "istiod" {
@@ -18,14 +19,44 @@ resource "helm_release" "istiod" {
   version    = "1.17.2"
   namespace  = "istio-system"
 
-  #  values = [templatefile("${path.module}/charts/kong/values/helm-values.yaml", {
-  #    key   = value,
-  #    key   = value
-  #  })]
+  #values = [templatefile("${path.module}/charts/istiod/values/helm-values.yaml", {
+  #  key   = value,
+  #  key   = value
+  #})]
 
   depends_on = [
     helm_release.istio_base
   ]
+}
+
+resource "helm_release" "hvv_istio_ingress_gateway" {
+  name              = "hvv-istio-ingress-gateway"
+  chart             = "${path.module}/charts/hvv-istio-ingress-gateway"
+  dependency_update = true
+  namespace         = "istio-ingress"
+  create_namespace  = true
+
+  values = [templatefile("${path.module}/charts/hvv-istio-ingress-gateway/values/helm-values.yaml", {
+    # key   = value,
+    # key   = value
+  })]
+
+  depends_on = [
+    helm_release.istiod
+  ]
+}
+###########
+
+
+resource "helm_release" "hvv_csi_driver_smb" {
+  name              = "hvv-csi-driver-smb"
+  chart             = "${path.module}/charts/hvv-csi-driver-smb"
+  dependency_update = true
+  namespace         = "kube-system"
+  values = [templatefile("${path.module}/charts/hvv-csi-driver-smb/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
 }
 
 resource "helm_release" "metrics_server" {
@@ -36,17 +67,6 @@ resource "helm_release" "metrics_server" {
   namespace        = "metrics-server"
   create_namespace = true
   values = [templatefile("${path.module}/charts/metrics-server/values/helm-values.yaml", {
-    #    key   = value,
-    #    key   = value
-  })]
-}
-
-resource "helm_release" "csi_driver_smb" {
-  name              = "hvv-csi-driver-smb"
-  chart             = "${path.module}/charts/csi-driver-smb"
-  dependency_update = true
-  namespace         = "kube-system"
-  values = [templatefile("${path.module}/charts/csi-driver-smb/values/helm-values.yaml", {
     #    key   = value,
     #    key   = value
   })]

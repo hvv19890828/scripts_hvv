@@ -13,7 +13,7 @@ sys_routines/motion/rec/
 sys_routines/motion/conf/
 sys_routines/pptpd/data/chap-secrets
 sys_routines/transmission/config/
-iac/k8s/onprem/charts/csi-driver-smb/charts/csi-driver-smb-v1.11.0.tgz
+iac/k8s/onprem/charts/csi-driver-smb/charts/
 
 # Terraform
 .terraform

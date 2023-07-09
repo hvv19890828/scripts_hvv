@@ -1,0 +1,4 @@
+gateway:
+  service:
+    # Type of service. Set to "None" to disable the service entirely
+    type: NodePort
