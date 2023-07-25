@@ -1,0 +1,5 @@
+apiVersion: v2
+appVersion: "v0.0.1"
+description: A Helm chart for preferences
+name: preferences
+version: 0.0.1

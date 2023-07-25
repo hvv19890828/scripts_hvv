@@ -1,3 +1,0 @@
-csi-driver-smb:
-  controller:
-    runOnControlPlane: true

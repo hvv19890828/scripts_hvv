@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: main
+  namespace: default
+spec:
+  selector:
+    istio: ingress-gateway
+  servers:
+  - port:
+      number: 443
+      name: https-termination
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: wild-card-tls
+    hosts:
+    - "*"

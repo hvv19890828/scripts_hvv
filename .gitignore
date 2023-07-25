@@ -14,6 +14,8 @@ sys_routines/motion/conf/
 sys_routines/pptpd/data/chap-secrets
 sys_routines/transmission/config/
 iac/k8s/onprem/charts/csi-driver-smb/charts/
+iac/k8s/onprem/charts/hvv-istio-ingress-gateway/charts/
+iac/k8s/onprem/charts/cert-manager/charts/
 
 # Terraform
 .terraform

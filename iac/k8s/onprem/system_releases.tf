@@ -6,10 +6,10 @@ resource "helm_release" "istio_base" {
   version          = "1.17.2"
   namespace        = "istio-system"
   create_namespace = true
-  #values = [templatefile("${path.module}/charts/istio-base/values/helm-values.yaml", {
-  #  key   = value,
-  #  key   = value
-  #})]
+  values = [templatefile("${path.module}/charts/istio-base/values/helm-values.yaml", {
+    #  key   = value,
+    #  key   = value
+  })]
 }
 
 resource "helm_release" "istiod" {
@@ -19,41 +19,44 @@ resource "helm_release" "istiod" {
   version    = "1.17.2"
   namespace  = "istio-system"
 
-  #values = [templatefile("${path.module}/charts/istiod/values/helm-values.yaml", {
-  #  key   = value,
-  #  key   = value
-  #})]
+  values = [templatefile("${path.module}/charts/istiod/values/helm-values.yaml", {
+    #  key   = value,
+    #  key   = value
+  })]
 
   depends_on = [
     helm_release.istio_base
   ]
 }
 
-resource "helm_release" "hvv_istio_ingress_gateway" {
-  name              = "hvv-istio-ingress-gateway"
-  chart             = "${path.module}/charts/hvv-istio-ingress-gateway"
-  dependency_update = true
-  namespace         = "istio-ingress"
-  create_namespace  = true
+resource "helm_release" "istio_ingress_gateway" {
+  name             = "istio-ingress-gateway"
+  repository       = "https://istio-release.storage.googleapis.com/charts"
+  chart            = "gateway"
+  version          = "1.17.2"
+  namespace        = "istio-ingress"
+  create_namespace = true
 
-  values = [templatefile("${path.module}/charts/hvv-istio-ingress-gateway/values/helm-values.yaml", {
+  values = [templatefile("${path.module}/charts/istio-ingress-gateway/values/helm-values.yaml", {
     # key   = value,
     # key   = value
   })]
 
   depends_on = [
-    helm_release.istiod
+    helm_release.istiod,
+    helm_release.metallb
   ]
 }
 ###########
 
 
-resource "helm_release" "hvv_csi_driver_smb" {
-  name              = "hvv-csi-driver-smb"
-  chart             = "${path.module}/charts/hvv-csi-driver-smb"
-  dependency_update = true
-  namespace         = "kube-system"
-  values = [templatefile("${path.module}/charts/hvv-csi-driver-smb/values/helm-values.yaml", {
+resource "helm_release" "csi_driver_smb" {
+  name       = "csi-driver-smb"
+  repository = "https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts"
+  chart      = "csi-driver-smb"
+  version    = "v1.11.0"
+  namespace  = "kube-system"
+  values = [templatefile("${path.module}/charts/csi-driver-smb/values/helm-values.yaml", {
     #    key   = value,
     #    key   = value
   })]
@@ -82,4 +85,46 @@ resource "helm_release" "sealed_secrets" {
   #    key   = value,
   #    key   = value
   #})]
+}
+
+resource "helm_release" "cert_manager" {
+  name             = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  chart            = "cert-manager"
+  version          = "v1.12.2"
+  namespace        = "cert-manager"
+  create_namespace = true
+  values = [templatefile("${path.module}/charts/cert-manager/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+}
+
+resource "helm_release" "metallb" {
+  name             = "metallb"
+  repository       = "https://metallb.github.io/metallb"
+  chart            = "metallb"
+  version          = "0.13.10"
+  namespace        = "metallb-system"
+  create_namespace = true
+  values = [templatefile("${path.module}/charts/metallb/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+}
+
+resource "helm_release" "preferences" {
+  name  = "preferences"
+  chart = "${path.module}/charts/preferences"
+  values = [templatefile("${path.module}/charts/preferences/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+  depends_on = [
+    helm_release.istio_ingress_gateway,
+    helm_release.cert_manager,
+    helm_release.sealed_secrets,
+    helm_release.csi_driver_smb,
+    helm_release.metallb
+  ]
 }
