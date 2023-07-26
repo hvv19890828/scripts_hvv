@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: "v0.13.10"
+description: An HVV's Helm chart for metallb setup
+name: hvv-metallb
+version: 0.0.1
+dependencies:
+- name: metallb
+  version: 0.13.10
+  repository: https://metallb.github.io/metallb
+  condition: metallb.enabled

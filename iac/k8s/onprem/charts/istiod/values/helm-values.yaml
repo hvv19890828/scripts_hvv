@@ -5,5 +5,5 @@ global:
   istioNamespace: istio-system
 
 meshConfig:
-  ingressService: istio-ingress-gateway
-  ingressSelector: ingress-gateway
+  ingressService: hvv-istio-ingress-gateway
+  ingressSelector: hvv-istio-ingress-gateway

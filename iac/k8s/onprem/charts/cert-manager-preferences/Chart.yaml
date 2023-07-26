@@ -1,0 +1,5 @@
+apiVersion: v2
+appVersion: "v1.12.2"
+description: An HVV's Helm chart for cert-manager-preferences setup
+name: cert-manager-preferences
+version: 0.0.1
