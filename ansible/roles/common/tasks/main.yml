@@ -18,6 +18,9 @@
 - name: docker docker-engine docker.io containerd runc
   apt:
    pkg:
+   - kubelet
+   - kubeadm
+   - kubectl   
    - docker
    - docker-engine
    - docker.io
