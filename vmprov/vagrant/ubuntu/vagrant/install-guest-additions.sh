@@ -1,10 +1,9 @@
 #!/bin/bash
-sudo timedatectl set-timezone Europe/Kiev
 GUEST_ADDITION_VERSION=5.2.4
 GUEST_ADDITION_ISO=VBoxGuestAdditions_${GUEST_ADDITION_VERSION}.iso
 GUEST_ADDITION_MOUNT=/media/VBoxGuestAdditions
 
-apt-get update -y && apt-get upgrade -y && apt-get install linux-headers-$(uname -r) build-essential dkms
+apt-get install linux-headers-$(uname -r) build-essential dkms
 
 wget http://download.virtualbox.org/virtualbox/${GUEST_ADDITION_VERSION}/${GUEST_ADDITION_ISO}
 mkdir -p ${GUEST_ADDITION_MOUNT}
