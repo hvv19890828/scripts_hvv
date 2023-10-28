@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo timedatectl set-timezone Europe/Kiev
 GUEST_ADDITION_VERSION=5.2.4
 GUEST_ADDITION_ISO=VBoxGuestAdditions_${GUEST_ADDITION_VERSION}.iso
 GUEST_ADDITION_MOUNT=/media/VBoxGuestAdditions
