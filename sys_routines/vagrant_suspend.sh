@@ -8,6 +8,6 @@ while [[ $is < $vvmstats ]]
 do
 tmps=$nodes$is
 cd /scripts_hvv/vmprov/vagrant/ && vagrant suspend $tmps
-sleep 1
+sleep 10
 let "is=is+1"
 done
