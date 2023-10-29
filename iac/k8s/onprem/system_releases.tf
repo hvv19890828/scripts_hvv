@@ -42,7 +42,8 @@ resource "helm_release" "hvv_istio_ingress_gateway" {
 
   depends_on = [
     helm_release.istiod,
-    helm_release.hvv_metallb
+    helm_release.hvv_metallb,
+    helm_release.cert_manager_preferences
   ]
 }
 ###########
