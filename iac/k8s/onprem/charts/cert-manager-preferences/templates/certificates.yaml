@@ -1,0 +1,38 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: certificate-ca
+  namespace: cert-manager
+spec:
+  secretName: certificate-ca-tls
+  commonName: hvv19890828.ddns.net
+  duration: 8760h # 365d
+  renewBefore: 360h # 15d
+  usages:
+    - server auth
+    - client auth
+  isCA: true
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hvv19890828-wild-card
+  namespace: istio-ingress
+spec:
+  secretName: wild-card-tls
+  commonName: "*.hvv19890828.ddns.net"
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  duration: 8760h # 365d
+  renewBefore: 360h # 15d
+  dnsNames:
+  - "*.hvv19890828.ddns.net"
+  issuerRef:
+    name:  ca-issuer
+    kind: ClusterIssuer

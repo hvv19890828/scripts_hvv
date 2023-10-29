@@ -1,3 +1,4 @@
+#Common
 nul
 temp/
 tmp
@@ -12,3 +13,34 @@ sys_routines/motion/rec/
 sys_routines/motion/conf/
 sys_routines/pptpd/data/chap-secrets
 sys_routines/transmission/config/
+iac/k8s/onprem/charts/hvv-csi-driver-smb/charts/
+iac/k8s/onprem/charts/hvv-istio-ingress-gateway/charts/
+iac/k8s/onprem/charts/hvv-cert-manager/charts/
+iac/k8s/onprem/charts/hvv-metallb/charts/
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+**/.terraform.lock.hcl
+**/*.pem
+
+# OS X
+.history
+.DS_Store
+
+# IntelliJ
+.idea_modules
+*.iml
+*.iws
+*.ipr
+.idea/
+build/
+*/build/
+out/
+
+# VSCode
+.vscode/
+
+# Terragrunt
+.terragrunt-cache

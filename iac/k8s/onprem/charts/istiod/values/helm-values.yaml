@@ -1,0 +1,9 @@
+telemetry:
+  enabled: true
+
+global:
+  istioNamespace: istio-system
+
+meshConfig:
+  ingressService: hvv-istio-ingress-gateway
+  ingressSelector: hvv-istio-ingress-gateway

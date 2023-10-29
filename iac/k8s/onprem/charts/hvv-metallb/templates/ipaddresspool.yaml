@@ -1,0 +1,12 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: main
+  namespace: metallb-system
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-failed
+spec:
+  addresses:
+  - 192.168.0.210-192.168.0.211
