@@ -16,7 +16,7 @@
    upgrade: yes
 
 - name: docker docker-engine docker.io containerd runc
-  apt:
+  ansible.builtin.apt:
    pkg:
    - kubelet
    - kubeadm
@@ -27,6 +27,8 @@
    - containerd
    - runc
    state: absent
+   dpkg_options: 'force-confold,force-confdef'
+   allow_change_held_packages: true
 
 - name: apt update 1
   apt:
