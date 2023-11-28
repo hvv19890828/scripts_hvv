@@ -1,0 +1,24 @@
+alertmanager:
+  enabled: false
+
+grafana:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    scrapeInterval: "1m"
+    evaluationInterval: "1m"
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: smb
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+        selector: {}
+
+defaultRules:
+  rules:
+    alertmanager: false
