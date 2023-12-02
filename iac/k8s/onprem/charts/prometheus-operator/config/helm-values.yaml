@@ -5,9 +5,18 @@ grafana:
   enabled: false
 
 prometheus:
+  agentMode: true
   prometheusSpec:
-    scrapeInterval: "1m"
-    evaluationInterval: "1m"
+    scrapeInterval: "30s"
+    evaluationInterval: "30s"
+
+    serviceMonitorSelector:
+      matchLabels:
+        prometheus: k8s-metrics-prometheus
+
+    podMonitorSelector:
+      matchLabels:
+        prometheus: k8s-metrics-prometheus
 
     storageSpec:
       volumeClaimTemplate:
@@ -19,6 +28,77 @@ prometheus:
               storage: 5Gi
         selector: {}
 
+  additionalRulesForClusterRole:
+    - apiGroups: [""]
+      resources:
+      - nodes
+      - nodes/metrics
+      - services
+      - endpoints
+      - pods
+      verbs: ["get", "list", "watch"]
+    - apiGroups: [""]
+      resources:
+      - configmaps
+      verbs: ["get"]
+    - apiGroups:
+      - networking.k8s.io
+      resources:
+      - ingresses
+      verbs: ["get", "list", "watch"]
+    - nonResourceURLs: ["/metrics"]
+      verbs: ["get"]
+
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
 defaultRules:
   rules:
     alertmanager: false
+
+kubeApiServer:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubelet:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeControllerManager:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+coreDns:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeDns:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeEtcd:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeScheduler:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeProxy:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+prometheusOperator:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
