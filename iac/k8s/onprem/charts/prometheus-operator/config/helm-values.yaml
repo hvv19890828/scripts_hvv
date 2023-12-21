@@ -5,7 +5,7 @@ grafana:
   enabled: false
 
 prometheus:
-  agentMode: true
+  agentMode: false
   prometheusSpec:
     scrapeInterval: "30s"
     evaluationInterval: "30s"
