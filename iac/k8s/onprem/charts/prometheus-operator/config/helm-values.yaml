@@ -102,3 +102,14 @@ prometheusOperator:
     additionalLabels:
       prometheus: k8s-metrics-prometheus
 
+kube-state-metrics:
+  prometheus:
+    monitor:
+      additionalLabels:
+        prometheus: k8s-metrics-prometheus
+
+prometheus-node-exporter:
+  prometheus:
+    monitor:
+      additionalLabels:
+        prometheus: k8s-metrics-prometheus
