@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi:set ft=ruby sw=2 ts=2 sts=2:
-NODES = 2
+NODES = 1
 NODES_START = 1
 BRIF = "wlp2s0"
 XRAM = 2048
