@@ -126,3 +126,21 @@ resource "helm_release" "hvv_metallb" {
     #    key   = value
   })]
 }
+
+resource "helm_release" "prometheus_operator" {
+  name             = "prometheus-operator"
+  chart            = "kube-prometheus-stack"
+  repository       = "https://prometheus-community.github.io/helm-charts"
+  namespace        = "prometheus"
+  create_namespace = true
+  version          = "48.2.1"
+  cleanup_on_fail  = true
+
+  values = [templatefile("${path.module}/charts/prometheus-operator/config/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+  depends_on = [
+    helm_release.hvv_csi_driver_smb
+  ]
+}

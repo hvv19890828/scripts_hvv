@@ -1,0 +1,115 @@
+alertmanager:
+  enabled: false
+
+grafana:
+  enabled: false
+
+prometheus:
+  agentMode: false
+  prometheusSpec:
+    scrapeInterval: "30s"
+    evaluationInterval: "30s"
+
+    serviceMonitorSelector:
+      matchLabels:
+        prometheus: k8s-metrics-prometheus
+
+    podMonitorSelector:
+      matchLabels:
+        prometheus: k8s-metrics-prometheus
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: smb
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+        selector: {}
+
+  additionalRulesForClusterRole:
+    - apiGroups: [""]
+      resources:
+      - nodes
+      - nodes/metrics
+      - services
+      - endpoints
+      - pods
+      verbs: ["get", "list", "watch"]
+    - apiGroups: [""]
+      resources:
+      - configmaps
+      verbs: ["get"]
+    - apiGroups:
+      - networking.k8s.io
+      resources:
+      - ingresses
+      verbs: ["get", "list", "watch"]
+    - nonResourceURLs: ["/metrics"]
+      verbs: ["get"]
+
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+defaultRules:
+  rules:
+    alertmanager: false
+
+kubeApiServer:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubelet:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeControllerManager:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+coreDns:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeDns:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeEtcd:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeScheduler:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kubeProxy:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+prometheusOperator:
+  serviceMonitor:
+    additionalLabels:
+      prometheus: k8s-metrics-prometheus
+
+kube-state-metrics:
+  prometheus:
+    monitor:
+      additionalLabels:
+        prometheus: k8s-metrics-prometheus
+
+prometheus-node-exporter:
+  prometheus:
+    monitor:
+      additionalLabels:
+        prometheus: k8s-metrics-prometheus
