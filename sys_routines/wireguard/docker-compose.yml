@@ -1,0 +1,28 @@
+---
+version: "3"
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Kyiv
+      - SERVERURL=hvv19890828.ddns.net
+      - SERVERPORT=51820
+      - PEERS=hvv19890828Ace,hvv19890828Yoga,hvv19890828Birdy,k8sHost1,k8sHost2,k8sHost3,k8sHost4,k8sHost5
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=192.168.5.0
+      - ALLOWEDIPS=0.0.0.0/0
+      - PERSISTENTKEEPALIVE_PEERS=hvv19890828Ace,hvv19890828Yoga,hvv19890828Birdy,k8sHost1,k8sHost2,k8sHost3,k8sHost4,k8sHost5
+      - LOG_CONFS=true
+    volumes:
+      - /scripts_hvv/sys_routines/wireguard/config:/config
+      - /lib/modules:/lib/modules
+    network_mode: host
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
