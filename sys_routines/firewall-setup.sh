@@ -14,7 +14,6 @@ iptables -A FORWARD -s 222.122.202.149 -j DROP
 iptables -A OUTPUT -d 222.122.202.149 -j DROP
 iptables -A FORWARD -d 222.122.202.149 -j DROP
 #pidor
-iptables -I INPUT -p tcp --dport 1723 -m state --state NEW -j ACCEPT
 iptables -I INPUT -p gre -j ACCEPT
 iptables -t nat -I POSTROUTING -o enx000ec79ecb52 -j MASQUERADE
 iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -s 192.168.5.0/24 -j TCPMSS  --clamp-mss-to-pmtu
