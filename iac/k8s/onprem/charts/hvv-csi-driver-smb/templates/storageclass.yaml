@@ -5,13 +5,13 @@ metadata:
   name: smb
 provisioner: smb.csi.k8s.io
 parameters:
-  source: "//192.168.0.103/tmp/k8s"
+  source: "//192.168.0.101/share/k8s"
   # if csi.storage.k8s.io/provisioner-secret is provided, will create a sub directory
   # with PV name under source
   csi.storage.k8s.io/provisioner-secret-name: "smbcreds"
-  csi.storage.k8s.io/provisioner-secret-namespace: "default"
+  csi.storage.k8s.io/provisioner-secret-namespace: "kube-system"
   csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
-  csi.storage.k8s.io/node-stage-secret-namespace: "default"
+  csi.storage.k8s.io/node-stage-secret-namespace: "kube-system"
 reclaimPolicy: Delete  # available values: Delete, Retain
 volumeBindingMode: Immediate
 mountOptions:

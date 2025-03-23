@@ -29,11 +29,19 @@ resource "helm_release" "istiod" {
   ]
 }
 
+resource "kubernetes_namespace" "istio_ingress" {
+  metadata {
+    labels = {
+      sys-component = "istio"
+    }
+    name = "istio-ingress"
+  }
+}
+
 resource "helm_release" "hvv_istio_ingress_gateway" {
   name              = "hvv-istio-ingress-gateway"
   chart             = "${path.module}/charts/hvv-istio-ingress-gateway"
-  namespace         = "istio-ingress"
-  create_namespace  = true
+  namespace         = kubernetes_namespace.istio_ingress.metadata.0.name
   dependency_update = true
   values = [templatefile("${path.module}/charts/hvv-istio-ingress-gateway/values/helm-values.yaml", {
     # key   = value,
@@ -49,19 +57,19 @@ resource "helm_release" "hvv_istio_ingress_gateway" {
 ###########
 
 
-resource "helm_release" "hvv_csi_driver_smb" {
-  name              = "hvv-csi-driver-smb"
-  chart             = "${path.module}/charts/hvv-csi-driver-smb"
-  namespace         = "kube-system"
-  dependency_update = true
-  values = [templatefile("${path.module}/charts/hvv-csi-driver-smb/values/helm-values.yaml", {
-    #    key   = value,
-    #    key   = value
-  })]
-  depends_on = [
-    helm_release.sealed_secrets
-  ]
-}
+#resource "helm_release" "hvv_csi_driver_smb" {
+#  name              = "hvv-csi-driver-smb"
+#  chart             = "${path.module}/charts/hvv-csi-driver-smb"
+#  namespace         = "kube-system"
+#  dependency_update = true
+#  values = [templatefile("${path.module}/charts/hvv-csi-driver-smb/values/helm-values.yaml", {
+#    #    key   = value,
+#    #    key   = value
+#  })]
+#  depends_on = [
+#    helm_release.sealed_secrets
+#  ]
+#}
 
 resource "helm_release" "metrics_server" {
   name             = "metrics-server"
@@ -110,7 +118,8 @@ resource "helm_release" "cert_manager_preferences" {
     #    key   = value
   })]
   depends_on = [
-    helm_release.cert_manager
+    helm_release.cert_manager,
+    kubernetes_namespace.istio_ingress
   ]
 }
 ####################
@@ -140,7 +149,4 @@ resource "helm_release" "prometheus_operator" {
     #    key   = value,
     #    key   = value
   })]
-  depends_on = [
-    helm_release.hvv_csi_driver_smb
-  ]
 }
