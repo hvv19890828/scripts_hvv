@@ -56,7 +56,6 @@ resource "helm_release" "hvv_istio_ingress_gateway" {
 }
 ###########
 
-
 #resource "helm_release" "hvv_csi_driver_smb" {
 #  name              = "hvv-csi-driver-smb"
 #  chart             = "${path.module}/charts/hvv-csi-driver-smb"
@@ -71,19 +70,6 @@ resource "helm_release" "hvv_istio_ingress_gateway" {
 #  ]
 #}
 
-resource "helm_release" "metrics_server" {
-  name             = "metrics-server"
-  repository       = "https://kubernetes-sigs.github.io/metrics-server/"
-  chart            = "metrics-server"
-  version          = "3.10.0"
-  namespace        = "metrics-server"
-  create_namespace = true
-  values = [templatefile("${path.module}/charts/metrics-server/values/helm-values.yaml", {
-    #    key   = value,
-    #    key   = value
-  })]
-}
-
 resource "helm_release" "sealed_secrets" {
   name       = "sealed-secrets"
   repository = "https://bitnami-labs.github.io/sealed-secrets"
@@ -94,6 +80,34 @@ resource "helm_release" "sealed_secrets" {
   #    key   = value,
   #    key   = value
   #})]
+}
+
+resource "helm_release" "hvv-vault" {
+  name  = "hvv-vault"
+  chart = "${path.module}/charts/hvv-vault"
+  values = [templatefile("${path.module}/charts/hvv-vault/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+  depends_on = [
+    helm_release.sealed_secrets
+  ]
+}
+
+resource "helm_release" "minio" {
+  name             = "minio"
+  repository       = "https://charts.min.io"
+  chart            = "minio"
+  version          = "5.4.0"
+  namespace        = "minio"
+  create_namespace = true
+  values = [templatefile("${path.module}/charts/minio/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+  depends_on = [
+    helm_release.hvv-vault
+  ]
 }
 
 ### CERT-MANAGER ###
@@ -136,6 +150,7 @@ resource "helm_release" "hvv_metallb" {
   })]
 }
 
+# Monitoring
 resource "helm_release" "prometheus_operator" {
   name             = "prometheus-operator"
   chart            = "kube-prometheus-stack"
@@ -150,3 +165,57 @@ resource "helm_release" "prometheus_operator" {
     #    key   = value
   })]
 }
+
+resource "helm_release" "metrics_server" {
+  name             = "metrics-server"
+  repository       = "https://kubernetes-sigs.github.io/metrics-server/"
+  chart            = "metrics-server"
+  version          = "3.10.0"
+  namespace        = "metrics-server"
+  create_namespace = true
+  values = [templatefile("${path.module}/charts/metrics-server/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+}
+
+########
+
+# Logging
+resource "helm_release" "grafana_loki" {
+  name             = "grafana-loki"
+  chart            = "loki"
+  repository       = "https://grafana.github.io/helm-charts"
+  namespace        = "logging"
+  create_namespace = true
+  version          = "6.29.0"
+  cleanup_on_fail  = true
+  values = [templatefile("${path.module}/charts/grafana-loki/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+  depends_on = [
+    helm_release.minio
+  ]
+}
+########
+
+# CI/CD
+resource "helm_release" "jenkins" {
+  name             = "jenkins"
+  chart            = "jenkins"
+  repository       = "https://charts.jenkins.io"
+  namespace        = "cicd"
+  create_namespace = true
+  version          = "5.8.36"
+  cleanup_on_fail  = true
+
+  values = [templatefile("${path.module}/charts/jenkins/values/helm-values.yaml", {
+    #    key   = value,
+    #    key   = value
+  })]
+  depends_on = [
+    helm_release.hvv-vault
+  ]
+}
+########

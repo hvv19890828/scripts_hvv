@@ -18,6 +18,10 @@ prometheus:
       matchLabels:
         prometheus: k8s-metrics-prometheus
 
+    resources:
+      limits:
+        memory: 400Mi
+
     storageSpec:
       volumeClaimTemplate:
         spec:

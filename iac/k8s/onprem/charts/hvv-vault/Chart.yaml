@@ -1,0 +1,5 @@
+apiVersion: v2
+appVersion: "v0.0.1"
+description: An HVV's Helm chart for hvv-vault setup
+name: hvv-vault
+version: 0.0.2
