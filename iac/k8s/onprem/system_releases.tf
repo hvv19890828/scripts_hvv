@@ -182,22 +182,22 @@ resource "helm_release" "metrics_server" {
 ########
 
 # Logging
-resource "helm_release" "grafana_loki" {
-  name             = "grafana-loki"
-  chart            = "loki"
-  repository       = "https://grafana.github.io/helm-charts"
-  namespace        = "logging"
-  create_namespace = true
-  version          = "6.29.0"
-  cleanup_on_fail  = true
-  values = [templatefile("${path.module}/charts/grafana-loki/values/helm-values.yaml", {
-    #    key   = value,
-    #    key   = value
-  })]
-  depends_on = [
-    helm_release.minio
-  ]
-}
+#resource "helm_release" "grafana_loki" {
+#  name             = "grafana-loki"
+#  chart            = "loki"
+#  repository       = "https://grafana.github.io/helm-charts"
+#  namespace        = "logging"
+#  create_namespace = true
+#  version          = "6.29.0"
+#  cleanup_on_fail  = true
+#  values = [templatefile("${path.module}/charts/grafana-loki/values/helm-values.yaml", {
+#    #    key   = value,
+#    #    key   = value
+#  })]
+#  depends_on = [
+#    helm_release.minio
+#  ]
+#}
 ########
 
 # CI/CD
@@ -218,4 +218,19 @@ resource "helm_release" "jenkins" {
     helm_release.hvv-vault
   ]
 }
+
+#data "kubernetes_secret_v1" "jenkinscreds" {
+#  metadata {
+#    name = "jenkinscreds"
+#    namespace = "cicd"
+#  }
+#  depends_on = [
+#    helm_release.hvv-vault
+#  ]
+#}
+#
+#output "jenkins_admin_password" {
+#  value     = nonsensitive(data.kubernetes_secret_v1.jenkinscreds.data["jenkins-admin-password"])
+#}
+
 ########
