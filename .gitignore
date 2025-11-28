@@ -7,8 +7,7 @@ vmprov/vagrant/.vagrant/
 vmprov/vagrant/*.log
 vmprov/vagrant/nul
 jenkins/
-ansible/group_vars/ddns_hvvsrv
-ansible/group_vars/all1
+ansible/group_vars/
 sys_routines/motion/rec/
 sys_routines/motion/conf/
 sys_routines/transmission/config/

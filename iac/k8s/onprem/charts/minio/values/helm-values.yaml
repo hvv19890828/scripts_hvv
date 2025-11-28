@@ -1,0 +1,14 @@
+replicas: 1
+persistence:
+  enabled: true
+  size: 10Gi
+  storageClass: standard
+existingSecret: miniocreds
+resources:
+  requests:
+    memory: 200Mi
+mode: standalone
+image:
+  tag: RELEASE.2024-12-18T13-15-44Z-cpuv1
+mcImage:
+  tag: RELEASE.2024-11-21T17-21-54Z-cpuv1
