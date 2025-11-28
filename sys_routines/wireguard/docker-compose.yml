@@ -11,7 +11,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/Kyiv
-      - SERVERURL=hvv19890828.ddns.net
+      - SERVERURL=hvv19890828-passage.ddns.net
       - SERVERPORT=51820
       - PEERS=hvv19890828Ace,hvv19890828Yoga,hvv19890828Birdy,k8sHost1,k8sHost2,k8sHost3,k8sHost4,k8sHost5
       - PEERDNS=auto

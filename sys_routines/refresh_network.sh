@@ -3,9 +3,9 @@ stateofAC=$(cat /sys/class/power_supply/ACAD/online)
 #verification
 if (( $stateofAC == 1 ));
 then
-ssh -i /root/.ssh/id_rsa -q hvv@hvv19890828.ddns.net -p 55399 exit
+ssh -i /root/.ssh/id_rsa -q hvv@hvv19890828-passage.ddns.net -p 55399 exit
 stateof101=$(echo $?) #curl --interface enx000ec79ecb52 -m 5 http://www.google.com/ | grep -i google | wc -l)
-ssh -i /root/.ssh/id_rsa -q hvv@hvv19890828.ddns.net -p 55299 exit
+ssh -i /root/.ssh/id_rsa -q hvv@hvv19890828-passage.ddns.net -p 55299 exit
 stateof100=$(echo $?) #curl --interface wlp2s0 -m 5 http://www.google.com/ | grep -i google | wc -l)
 if (( $stateof100 < 1 && $stateof101 < 1 )); #&& $stateof101 > 0
 then

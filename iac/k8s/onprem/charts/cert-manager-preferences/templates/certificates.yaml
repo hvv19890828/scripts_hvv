@@ -6,7 +6,7 @@ metadata:
   namespace: cert-manager
 spec:
   secretName: certificate-ca-tls
-  commonName: hvv19890828.ddns.net
+  commonName: hvv19890828-passage.ddns.net
   duration: 8760h # 365d
   renewBefore: 360h # 15d
   usages:
@@ -24,7 +24,7 @@ metadata:
   namespace: istio-ingress
 spec:
   secretName: wild-card-tls
-  commonName: "*.hvv19890828.ddns.net"
+  commonName: "*.hvv19890828-passage.ddns.net"
   isCA: false
   usages:
     - server auth
@@ -32,7 +32,7 @@ spec:
   duration: 8760h # 365d
   renewBefore: 360h # 15d
   dnsNames:
-  - "*.hvv19890828.ddns.net"
+  - "*.hvv19890828-passage.ddns.net"
   issuerRef:
     name:  ca-issuer
     kind: ClusterIssuer
